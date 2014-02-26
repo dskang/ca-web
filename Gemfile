@@ -7,7 +7,13 @@ gem 'rails', '4.0.3'
 group :development do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
+  # For use with bootstrap
+  gem 'rails_layout'
 end
+
+# Use bootstrap
+gem 'bootstrap-sass'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
