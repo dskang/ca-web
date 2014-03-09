@@ -1,0 +1,7 @@
+<h2>Confirm your .edu email address</h2>
+
+<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.submit "Confirm my account", class: "btn btn-large btn-primary" %>
+<% end %>
