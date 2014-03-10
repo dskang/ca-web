@@ -1,1 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+princeton:
+  id: 1
+  name: princeton
+  signups: 0
