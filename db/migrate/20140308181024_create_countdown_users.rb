@@ -5,6 +5,7 @@ class CreateCountdownUsers < ActiveRecord::Migration
       t.string   :confirmation_token
       t.datetime :confirmed_at
       t.datetime :confirmation_sent_at
+      t.integer  :school_id
 
       t.timestamps
     end
