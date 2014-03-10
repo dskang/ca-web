@@ -14,4 +14,5 @@ class CountdownUserTest < ActiveSupport::TestCase
     assert CountdownUser.new(email:"test@yale.edu").valid?
     assert CountdownUser.new(email:"test@brown.edu").valid?
   end
+
 end
