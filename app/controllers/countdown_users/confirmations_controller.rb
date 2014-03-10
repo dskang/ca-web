@@ -1,14 +1,26 @@
 class CountdownUsers::ConfirmationsController < Devise::ConfirmationsController
 
   def create
-    self.resource = CountdownUser.create(:email => params[resource_name][:email]) # resource_class.send_confirmation_instructions(params[resource_name])
-    yield resource if block_given?
 
-    if successfully_sent?(resource)
-      respond_with(resource)
-      # respond_with({}, location: after_resending_confirmation_instructions_path_for(resource_name))
+    email = params[resource_name][:email]
+    countdown_user = CountdownUser.find_by(email:email)
+
+    unless countdown_user.nil?
+      if countdown_user.confirmed?
+        self.resource = countdown_user
+        set_flash_message(:notice, :confirmed)
+      else
+        set_flash_message(:notice, "We've already sent you a confirmation email to #{email}, check your inbox!")
+      end
     else
-      respond_with(resource)
+      self.resource = CountdownUser.create(email:email)
+      yield resource if block_given?
+      if successfully_sent?(resource)
+        respond_with(resource)
+        # respond_with({}, location: after_resending_confirmation_instructions_path_for(resource_name))
+      else
+        respond_with(resource)
+      end
     end
   end
 
