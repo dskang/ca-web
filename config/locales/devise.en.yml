@@ -4,8 +4,9 @@ en:
   devise:
     confirmations:
       countdown_user:
-        invalid_email: "Please enter a valid Ivy League .edu email address"
-        confirmation_already_sent: "We've already sent you a confirmation email to #{email}, check your inbox!"
+        invalid_email: "Please enter a valid Ivy League .edu email address!"
+        confirmation_already_sent: "We've already sent a confirmation link to this email address. Please check your email!"
+        already_confirmed: "This email address has already been used!"
       confirmed: "Your account was successfully confirmed."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
