@@ -29,12 +29,14 @@ class CountdownUsers::ConfirmationsController < Devise::ConfirmationsController
   end
 
   def show
-    countdown_user = CountdownUser.find_by(confirmation_token: params[:confirmation_token])
-    if countdown_user.nil?
+    @countdown_user = CountdownUser.find_by(confirmation_token: params[:confirmation_token])
+    if @countdown_user.nil?
       set_flash_message(:alert, :already_confirmed, now: true)
     else
-      countdown_user.confirm!
-      countdown_user.school.increment!(:signups)
+      @countdown_user.confirm!
+      @countdown_user.school.increment!(:signups)
+      @signups_completed = @countdown_user.school.signups
+      @signups_remaining = School.unlocked_threshold - @countdown_user.school.signups
       set_flash_message(:notice, :confirmed, now: true)
     end
   end

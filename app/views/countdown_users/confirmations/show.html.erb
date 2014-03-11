@@ -1,1 +1,8 @@
-<h1>FIXME: put some content here!</h1>
+<% if @countdown_user.nil? %>
+  <h1> Sorry, it looks like you can't confirm your email at the moment. Visit our <%= link_to "homepage", :root %> and try again!
+<% elsif @signups_remaining <= 0 %>
+  <h1>Congratulations, <%=@countdown_user.email%>, you just unlocked Campus Anonymous for your school! Start chatting and tell your friends!
+<% else %>
+  <h1>Congratulations, <%=@countdown_user.email%>!</h1></br>
+  <h2>You're one step closer to bringing Campus Anonymous to your school. You only have <%=pluralize(@signups_remaining, "signup")%> remaining before you unlock your school.</h2>
+<% end %>
