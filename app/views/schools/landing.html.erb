@@ -1,0 +1,11 @@
+<% if @school.nil? and School.is_allowed?(@url_name) %>
+<%provide(:title, School.proper_name(@url_name))%>
+<h1>Hi there! You have 500 signups to go before <%=School.proper_name(@url_name)%> is unlocked.</h1>
+<% elsif @school.nil? %>
+<%provide(:title, "Sorry!")%>
+<h1>Hi there! It looks like we don't support that school yet!</h1>
+<% else %>
+<%provide(:title, @school_name)%>
+<h1>Hi there! It looks like you go to <%=@school_name%>.</h1>
+<h2>You have <%=@school_signups_completed%> signups, which means that you have <%=@school_signups_remaining%> signups remaining and your school is <%= @school_unlocked ? "unlocked" : "locked" %>.</h2>
+<% end %>
