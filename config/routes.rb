@@ -1,10 +1,11 @@
 Ca::Application.routes.draw do
 
+  root 'static_pages#home'
+  get '/about' => 'static_pages#about'
   get "/:school_name", to: 'schools#landing'
   devise_for :countdown_users, path:"new_user", controllers: {confirmations: "countdown_users/confirmations"}, path_names: {confirmation: "confirm"}
   devise_for :users
-  root 'static_pages#home'
-  get '/about' => 'static_pages#about'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
