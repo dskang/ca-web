@@ -9,23 +9,25 @@ class CountdownUsers::ConfirmationsController < Devise::ConfirmationsController
       new_countdown_user.set_school_id!
       if new_countdown_user.confirmation_token.nil?
         set_flash_message(:notice, :invalid_email)
-        redirect_to new_confirmation_path(resource_name)
+        redirect_to :back
       else
         self.resource = new_countdown_user
         set_flash_message(:notice, :send_instructions)
         yield resource if block_given?
+        redirect_to :back
       end
     else
       if countdown_user.confirmed?
         set_flash_message(:notice, :already_confirmed)
-        redirect_to new_confirmation_path(resource_name)
+        redirect_to :back
       else
         set_flash_message(:notice, :confirmation_already_sent)
-        redirect_to new_confirmation_path(resource_name)
+        redirect_to :back
       end
     end
   end
 
+  # FIXME: ADD REDIRECTS HERE
   def show
     countdown_user = CountdownUser.find_by(confirmation_token: params[:confirmation_token])
     if countdown_user.nil?

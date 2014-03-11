@@ -12,9 +12,7 @@ class CountdownUserFlowsTest < ActionDispatch::IntegrationTest
     assert_nil School.find_by(name:"harvard")
 
     # Confirm email for new school
-    # FIXME: use URL helper here
-    # :countdown_user_confirmation_url, :new_countdown_user_confirmation_path, :new_countdown_user_confirmation_url,
-    post countdown_user_confirmation_path(:countdown_user), countdown_user:{email: new_email}
+    post countdown_user_confirmation_path, countdown_user:{email: new_email}
     assert_not_nil CountdownUser.find_by(email:new_email)
     assert_not CountdownUser.find_by(email:new_email).confirmed?
     assert_not_nil CountdownUser.find_by(email:new_email).school_id
@@ -55,7 +53,7 @@ class CountdownUserFlowsTest < ActionDispatch::IntegrationTest
     existing_signups = School.find_by(name:"princeton").signups
 
     # Confirm email for existing school
-    post countdown_user_confirmation_path(:countdown_user), countdown_user:{email:new_email}
+    post countdown_user_confirmation_path, countdown_user:{email:new_email}
     assert_not_nil CountdownUser.find_by(email:new_email)
     assert_not CountdownUser.find_by(email:new_email).confirmed?
     assert_not_nil CountdownUser.find_by(email:new_email).school_id
@@ -88,7 +86,7 @@ class CountdownUserFlowsTest < ActionDispatch::IntegrationTest
     invalid_email = "foo@bar.com"
 
     assert_nil CountdownUser.find_by(email:invalid_email)
-    post countdown_user_confirmation_path(:countdown_user), countdown_user:{email:invalid_email}
+    post countdown_user_confirmation_path, countdown_user:{email:invalid_email}
     assert_nil CountdownUser.find_by(email:invalid_email)
     assert_equal flash[:notice], "Please enter a valid Ivy League .edu email address!"
 
@@ -101,10 +99,10 @@ class CountdownUserFlowsTest < ActionDispatch::IntegrationTest
     existing_inbox_size = ActionMailer::Base.deliveries.size
 
     # Send form twice
-    post countdown_user_confirmation_path(:countdown_user), countdown_user:{email:duplicate_email}
+    post countdown_user_confirmation_path, countdown_user:{email:duplicate_email}
     assert_equal existing_inbox_size + 1, ActionMailer::Base.deliveries.size
 
-    post countdown_user_confirmation_path(:countdown_user), countdown_user:{email:duplicate_email}
+    post countdown_user_confirmation_path, countdown_user:{email:duplicate_email}
     assert_equal existing_inbox_size + 1, ActionMailer::Base.deliveries.size
     assert_equal flash[:notice], "We've already sent a confirmation link to this email address. Please check your email!"
 
@@ -116,7 +114,7 @@ class CountdownUserFlowsTest < ActionDispatch::IntegrationTest
     many_click_email = "many_click_email@princeton.edu"
 
     # Submit email
-    post countdown_user_confirmation_path(:countdown_user), countdown_user:{email:many_click_email}
+    post countdown_user_confirmation_path, countdown_user:{email:many_click_email}
     assert_not_nil School.find_by(name:"princeton")
     existing_signups = School.find_by(name:"princeton").signups
 
