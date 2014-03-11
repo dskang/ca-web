@@ -1,6 +1,7 @@
 class CountdownUsers::ConfirmationsController < Devise::ConfirmationsController
 
   def create
+    flash.clear
     email = params[resource_name][:email]
     from_path = params[:from_path] ? params[:from_path] : :root
     countdown_user = CountdownUser.find_by(email:email)
@@ -29,12 +30,14 @@ class CountdownUsers::ConfirmationsController < Devise::ConfirmationsController
   end
 
   def show
+    flash.clear
     @countdown_user = CountdownUser.find_by(confirmation_token: params[:confirmation_token])
     if @countdown_user.nil?
       set_flash_message(:alert, :already_confirmed, now: true)
     else
       @countdown_user.confirm!
       @countdown_user.school.increment!(:signups)
+      @school_name = School.proper_name(CountdownUser.get_school_name_from(@countdown_user.email))
       @signups_completed = @countdown_user.school.signups
       @signups_remaining = School.unlocked_threshold - @countdown_user.school.signups
       set_flash_message(:notice, :confirmed, now: true)
