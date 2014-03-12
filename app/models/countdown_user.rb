@@ -9,7 +9,7 @@ class CountdownUser < ActiveRecord::Base
   def self.get_school_name_from(email)
     pattern = /\A[\w+\-.]+@(?<school_name>\w+).edu\z/i
     match = pattern.match(email)
-    match.nil? ? match : match[:school_name]
+    match[:school_name] unless match.nil?
   end
 
   def domain_is_allowed?
