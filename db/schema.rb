@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140310010354) do
 
   create_table "schools", force: true do |t|
     t.string   "name"
-    t.integer  "signups"
+    t.integer  "signups",    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,7 @@
+<%= @school.proper_name %> needs <%= pluralize(School::UNLOCK_THRESHOLD - @school.signups, "more signup") %> to be unlocked!
+
+<%= form_for :countdown_user, url: countdown_user_confirmation_path do |f| %>
+  <%= f.text_field :email, placeholder: "Your #{@school.name}.edu email" %>
+  <%= f.hidden_field :school_id, value: @school.id %>
+  <%= f.submit "Unlock #{@school.proper_name}" %>
+<% end %>

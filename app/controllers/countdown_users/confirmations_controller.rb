@@ -1,46 +1,46 @@
 class CountdownUsers::ConfirmationsController < Devise::ConfirmationsController
-
   def create
-    flash.clear
-    email = params[resource_name][:email]
-    from_path = params[:from_path] ? params[:from_path] : :root
-    countdown_user = CountdownUser.find_by(email:email)
+    existing_user = CountdownUser.find_by(countdown_user_params)
 
-    if countdown_user.nil?
-      new_countdown_user = CountdownUser.create(email:email)
-      new_countdown_user.set_school_id!
-      if new_countdown_user.confirmation_token.nil?
-        set_flash_message(:alert, :invalid_email, now: true)
-        redirect_to from_path
+    if existing_user.nil?
+      countdown_user = CountdownUser.new(countdown_user_params)
+      if countdown_user.save
+        set_flash_message :notice, :send_instructions
       else
-        self.resource = new_countdown_user
-        set_flash_message(:notice, :send_instructions, now: true)
-        yield resource if block_given?
-        redirect_to from_path
+        set_flash_message :error, :invalid_email, school: countdown_user.school.name if countdown_user.school
       end
     else
-      if countdown_user.confirmed?
-        redirect_to from_path
-        set_flash_message(:alert, :already_confirmed, now: true)
+      if existing_user.confirmed?
+        set_flash_message :notice, :already_confirmed
       else
-        redirect_to from_path
-        set_flash_message(:alert, :confirmation_already_sent, now: true)
+        set_flash_message :notice, :confirmation_already_sent
       end
     end
+    redirect_to :back
   end
 
   def show
-    flash.clear
-    @countdown_user = CountdownUser.find_by(confirmation_token: params[:confirmation_token])
-    if @countdown_user.nil?
-      set_flash_message(:alert, :already_confirmed, now: true)
+    confirmation_token = params[:confirmation_token]
+    countdown_user = CountdownUser.find_by(confirmation_token: confirmation_token)
+
+    if countdown_user.nil?
+      redirect_to :root
     else
-      @countdown_user.confirm!
-      @countdown_user.school.increment!(:signups)
-      @school_name = School.proper_name(CountdownUser.get_school_name_from(@countdown_user.email))
-      @signups_completed = @countdown_user.school.signups
-      @signups_remaining = School.unlocked_threshold - @countdown_user.school.signups
-      set_flash_message(:notice, :confirmed, now: true)
+      if countdown_user.confirmed?
+        set_flash_message :alert, :already_confirmed
+      else
+        countdown_user.confirm!
+        countdown_user.update(confirmation_token: confirmation_token)
+
+        countdown_user.school.increment!(:signups)
+        set_flash_message :notice, :confirmed
+      end
+      redirect_to countdown_path(countdown_user.school.name)
     end
   end
+
+  private
+    def countdown_user_params
+      params.require(:countdown_user).permit(:email, :school_id)
+    end
 end
