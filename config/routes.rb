@@ -1,4 +1,7 @@
 Ca::Application.routes.draw do
+
+  get "/:school_name", to: 'schools#landing'
+  devise_for :countdown_users, controllers: {confirmations: "countdown_users/confirmations"}
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
