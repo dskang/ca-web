@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title><%= content_for?(:title) ? yield(:title) : "Campus Anonymous" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Campus Anonymous is a site to connect college students anonymously." %>">
+    <meta property="og:title" content="Campus Anonymous">
+    <meta property="og:description" content="There are amazing people in the Ivy League you've never met.">
+    <meta property="og:url" content="http://www.campusanonymous.com">
+    <meta property="og:image" content="http://www.tigersanonymous.com/img/ta1024.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <%= favicon_link_tag '/favico.ico' %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", media: "all" %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
