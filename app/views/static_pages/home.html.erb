@@ -1,23 +1,43 @@
-<div class="row">
-  <div class="col-xs-12 text-center">
-    <h1>Pick your school!</h1>
+<body class="cover">
+  <div class="wrapper">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="hook">Pick your school here!</h1>
+        </div>
+      </div>
+      <% schools = %w(princeton harvard yale brown upenn columbia dartmouth cornell) %>
+      <div class="row">
+        <% schools[0...4].each do |school| %>
+          <div class="col-md-3">
+            <div class="row text-center padded-icon">
+              <i class="fa fa-btc large-icon"></i>
+            </div>
+            <div class="row text-center padded-text">
+              <h2>
+              <%=school.titleize%><br>
+              </h2>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <div class="row">
+        <% schools[4...8].each do |school| %>
+          <div class="col-md-3">
+            <div class="row text-center padded-icon">
+              <i class="fa fa-btc large-icon"></i>
+            </div>
+            <div class="row text-center padded-text">
+              <h2>
+              <%=school.titleize%><br>
+              </h2>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <footer class="row text-center">
+        <h2> Not an Ivy? Click here!</h2>
+      </footer>
+    </div>
   </div>
-</div>
-<% schools = %w(princeton harvard yale brown upenn columbia dartmouth cornell) %>
-<div class="row">
-  <% schools[0...4].each do |school| %>
-  <div class="col-md-3">
-    <%= link_to image_tag("#{school}.png", class: "school-logo"), countdown_path(school) %>
-  </div>
-  <% end %>
-</div>
-<div class="row">
-  <% schools[4...8].each do |school| %>
-  <div class="col-md-3">
-    <%= link_to image_tag("#{school}.png", class: "school-logo"), countdown_path(school) %>
-  </div>
-  <% end %>
-</div>
-<footer class="row text-center">
-  <h2> Not an Ivy? Click here!</h2>
-</footer>
+</body>
