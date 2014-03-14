@@ -6,6 +6,15 @@ class CountdownUserTest < ActiveSupport::TestCase
     assert_not countdown_user.save
   end
 
+  test "should not save with non-ivy school" do
+    school = School.find_by(name: "duke")
+    assert school.nil?
+
+    user = CountdownUser.new(email: "hi@duke.edu")
+    user.school = school
+    assert_not user.save
+  end
+
   test "should not save mismatching email for school" do
     princeton = School.find_by(name: "princeton")
     assert_not princeton.nil?
