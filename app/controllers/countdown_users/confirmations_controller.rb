@@ -1,8 +1,8 @@
 class CountdownUsers::ConfirmationsController < Devise::ConfirmationsController
   def create
-    existing_user = CountdownUser.find_by(countdown_user_params)
+    countdown_user = CountdownUser.find_by(countdown_user_params)
 
-    if existing_user.nil?
+    if countdown_user.nil?
       countdown_user = CountdownUser.new(countdown_user_params)
       if countdown_user.save
         set_flash_message :notice, :send_instructions
@@ -10,13 +10,18 @@ class CountdownUsers::ConfirmationsController < Devise::ConfirmationsController
         set_flash_message :error, :invalid_email, school: countdown_user.school.name if countdown_user.school
       end
     else
-      if existing_user.confirmed?
+      if countdown_user.confirmed?
         set_flash_message :notice, :already_confirmed
       else
         set_flash_message :notice, :confirmation_already_sent
       end
     end
-    redirect_to :back
+
+    if countdown_user.school
+      redirect_to countdown_path(countdown_user.school.name)
+    else
+      redirect_to :root
+    end
   end
 
   def show

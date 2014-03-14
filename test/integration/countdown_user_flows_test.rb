@@ -2,14 +2,8 @@ require 'test_helper'
 
 class CountdownUserFlowsTest < ActionDispatch::IntegrationTest
 
-  def setup
-    @headers = {}
-    @headers["HTTP_REFERER"] = countdown_url("princeton")
-  end
-
   test "new school email should confirm properly, create a new school object and increment its signups" do 
     # Initialize variables
-    @headers["HTTP_REFERER"] = countdown_url("harvard")
     school = School.find_by(name: "harvard")
     email = "foo@harvard.edu"
 
@@ -19,7 +13,7 @@ class CountdownUserFlowsTest < ActionDispatch::IntegrationTest
     existing_signups = school.signups
 
     # Confirm email for school
-    post_via_redirect countdown_user_confirmation_path, { countdown_user: { email: email, school_id: school.id } }, @headers
+    post_via_redirect countdown_user_confirmation_path, countdown_user: { email: email, school_id: school.id }
     countdown_user = CountdownUser.find_by(email: email)
     assert_not_nil countdown_user
     assert_not countdown_user.confirmed?
@@ -55,7 +49,7 @@ class CountdownUserFlowsTest < ActionDispatch::IntegrationTest
     school = School.find_by(name: "princeton")
 
     assert_nil CountdownUser.find_by(email: email)
-    post_via_redirect countdown_user_confirmation_path, { countdown_user: { email: email, school_id: school.id } }, @headers
+    post_via_redirect countdown_user_confirmation_path, countdown_user: { email: email, school_id: school.id }
     assert_nil CountdownUser.find_by(email: email)
     assert_equal countdown_user_message(:invalid_email, school: "princeton"), flash[:error]
     assert_equal countdown_path("princeton"), path
@@ -68,12 +62,12 @@ class CountdownUserFlowsTest < ActionDispatch::IntegrationTest
     existing_inbox_size = ActionMailer::Base.deliveries.size
 
     # Send form twice
-    post_via_redirect countdown_user_confirmation_path, { countdown_user: { email: email, school_id: school.id } }, @headers
+    post_via_redirect countdown_user_confirmation_path, countdown_user: { email: email, school_id: school.id }
     assert_equal existing_inbox_size + 1, ActionMailer::Base.deliveries.size
     assert_equal countdown_user_message(:send_instructions), flash[:notice]
     assert_equal countdown_path("princeton"), path
 
-    post_via_redirect countdown_user_confirmation_path, { countdown_user: { email: email, school_id: school.id } }, @headers
+    post_via_redirect countdown_user_confirmation_path, countdown_user: { email: email, school_id: school.id }
     assert_equal existing_inbox_size + 1, ActionMailer::Base.deliveries.size
     assert_equal countdown_user_message(:confirmation_already_sent), flash[:notice]
     assert_equal countdown_path("princeton"), path
@@ -87,7 +81,7 @@ class CountdownUserFlowsTest < ActionDispatch::IntegrationTest
     existing_signups = school.signups
 
     # Submit email
-    post_via_redirect countdown_user_confirmation_path, { countdown_user: { email: email, school_id: school.id } }, @headers
+    post_via_redirect countdown_user_confirmation_path, countdown_user: { email: email, school_id: school.id }
 
     # Parse confirmation email message
     email_message = ActionMailer::Base.deliveries.last
