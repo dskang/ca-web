@@ -15,5 +15,11 @@ class CountdownUserTest < ActiveSupport::TestCase
 
     user2 = CountdownUser.new(email: "hi@harvard.edu", school_id: princeton.id)
     assert !user2.save
+
+    user3 = CountdownUser.new(email: "hi@duke.edu", school_id: princeton.id)
+    assert !user3.save
+
+    user4 = CountdownUser.new(email: "foo@bar.com", school_id: princeton.id)
+    assert !user4.save
   end
 end
