@@ -3,40 +3,30 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
-          <h1 class="hook">Pick your school here!</h1>
+          <h1 class="hook">Which Ivy League University do you attend?</h1>
         </div>
       </div>
-      <% schools = %w(princeton harvard yale brown upenn columbia dartmouth cornell) %>
       <div class="row">
-        <% schools[0...4].each do |school| %>
-          <div class="col-md-3">
-            <div class="row text-center padded-icon">
-              <i class="fa fa-btc large-icon"></i>
+        <% number_of_columns = @schools.size/@number_of_rows %>
+        <% @number_of_rows.times do |row_number| %>
+          <% @schools[(row_number * number_of_columns)...((row_number + 1) * number_of_columns)].each do |school_name| %>
+            <%= tag("div", class: "col-md-#{12/number_of_columns}") %>
+              <div class="row text-center padded-icon">
+                <div class="col-md-12">
+                  <%= image_tag("#{school_name}.jpg", :alt => "#{school_name}") %>
+                </div>
+              </div>
+              <div class="row text-center padded-icon">
+                <div class="col-md-12">
+                  <%= link_to "#{school_name == "upenn" ? "Penn" : school_name.titleize}", countdown_path("#{school_name}"), class: "go-btn btn btn-success btn-xlg btn-block"%>
+                </div>
+              </div>
             </div>
-            <div class="row text-center padded-text">
-              <h2>
-              <%=school.titleize%><br>
-              </h2>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="row">
-        <% schools[4...8].each do |school| %>
-          <div class="col-md-3">
-            <div class="row text-center padded-icon">
-              <i class="fa fa-btc large-icon"></i>
-            </div>
-            <div class="row text-center padded-text">
-              <h2>
-              <%=school.titleize%><br>
-              </h2>
-            </div>
-          </div>
+          <% end %>
         <% end %>
       </div>
       <footer class="row text-center">
-        <h2> Not an Ivy? Click here!</h2>
+        <h2> Not at an Ivy? Click here!</h2>
       </footer>
     </div>
   </div>
