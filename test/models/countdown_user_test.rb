@@ -1,18 +1,34 @@
 require 'test_helper'
 
 class CountdownUserTest < ActiveSupport::TestCase
-  test "email validation" do
-    assert_not CountdownUser.new(email:"foo@bar.com").valid?
-    assert_not CountdownUser.new(email:"test@duke.edu").valid?
-    assert_not CountdownUser.new(email:"hi").valid?
-    assert CountdownUser.new(email:"test@harvard.edu").valid?
-    assert CountdownUser.new(email:"test@princeton.edu").valid?
-    assert CountdownUser.new(email:"test@upenn.edu").valid?
-    assert CountdownUser.new(email:"test@columbia.edu").valid?
-    assert CountdownUser.new(email:"test@cornell.edu").valid?
-    assert CountdownUser.new(email:"test@dartmouth.edu").valid?
-    assert CountdownUser.new(email:"test@yale.edu").valid?
-    assert CountdownUser.new(email:"test@brown.edu").valid?
+  test "should not save countdown user without school" do
+    countdown_user = CountdownUser.new(email: "hi@princeton.edu")
+    assert_not countdown_user.save
   end
 
+  test "should not save with non-ivy school" do
+    school = School.find_by(name: "duke")
+    assert school.nil?
+
+    user = CountdownUser.new(email: "hi@duke.edu")
+    user.school = school
+    assert_not user.save
+  end
+
+  test "should not save mismatching email for school" do
+    princeton = School.find_by(name: "princeton")
+    assert_not princeton.nil?
+
+    user1 = CountdownUser.new(email: "hi@princeton.edu", school_id: princeton.id)
+    assert user1.save
+
+    user2 = CountdownUser.new(email: "hi@harvard.edu", school_id: princeton.id)
+    assert_not user2.save
+
+    user3 = CountdownUser.new(email: "hi@duke.edu", school_id: princeton.id)
+    assert_not user3.save
+
+    user4 = CountdownUser.new(email: "foo@bar.com", school_id: princeton.id)
+    assert_not user4.save
+  end
 end

@@ -17,7 +17,7 @@ Ca::Application.configure do
   config.action_mailer.raise_delivery_errors = true
 
   # Added to debug locally (from http://stackoverflow.com/questions/8186584/how-do-i-set-up-email-confirmation-with-devise)
-  # Run mailcatcher, visit port 1080 in the browser (mailcatcher runs on 1025 by default)
+  # Run mailcatcher: Web interface runs on port 1080, SMTP server runs on port 1025
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}

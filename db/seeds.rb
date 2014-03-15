@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+schools = %w(princeton harvard yale brown upenn columbia dartmouth cornell)
+schools.each { |school| School.create(name: school) }
