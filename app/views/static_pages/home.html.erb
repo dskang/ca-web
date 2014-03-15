@@ -1,14 +1,16 @@
 <body class="cover">
   <div class="wrapper">
     <div class="container">
+      <%= render "how_it_works" %>
       <div class="row text-center">
         <div class="col-md-12">
-          <h1 class="hook">Which Ivy League University do you attend?</h1>
+          <h1 class="hook">Where do you go to school?</h1>
         </div>
       </div>
       <div class="row">
-        <% number_of_columns = @schools.size/@number_of_rows %>
-        <% @number_of_rows.times do |row_number| %>
+        <% number_of_rows = 2 %>
+        <% number_of_columns = @schools.size/number_of_rows %>
+        <% number_of_rows.times do |row_number| %>
           <% @schools[(row_number * number_of_columns)...((row_number + 1) * number_of_columns)].each do |school_name| %>
             <%= tag("div", class: "col-md-#{12/number_of_columns}") %>
               <div class="row text-center padded-icon">
@@ -16,7 +18,7 @@
                   <%= image_tag("#{school_name}.jpg", :alt => "#{school_name}") %>
                 </div>
               </div>
-              <div class="row text-center padded-icon">
+              <div class="row text-center">
                 <div class="col-md-12">
                   <%= link_to "#{school_name == "upenn" ? "Penn" : school_name.titleize}", countdown_path("#{school_name}"), class: "go-btn btn btn-success btn-xlg btn-block"%>
                 </div>
