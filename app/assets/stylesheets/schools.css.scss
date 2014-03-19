@@ -24,7 +24,6 @@ body {
   width: 100%;
 }
 
-
 // School colors 
 
 .princeton {
@@ -57,6 +56,12 @@ body {
 
 .dartmouth {
   background-color: #00693e;
+}
+
+.progress-bar-name {
+  height: inherit;
+  padding: 40px;
+  font-size: 24px;
 }
 
 .cover {
