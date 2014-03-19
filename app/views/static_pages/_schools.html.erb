@@ -1,15 +1,25 @@
 <% @schools.each do |school| %>
-<div class="row">
-  <div class="col-md-12">
-    <%= tag("a", href:countdown_path("#{school.name}")) %>
-      <div class="progress progress-striped active">
-        <%= tag("div", class: "progress-bar #{school.name}", role: "progressbar", aria_valuenow: "#{school.signups}", aria_valuemin: "0", aria_valuemax: "#{@unlock_threshold}", style: "width: #{@unlock_threshold * 50/@unlock_threshold}%") %>
-          <div class="progress-bar-name">
-            <%= "#{school.proper_name}" %>
-          </div>
+<% percent_signed_up = school.signups/@unlock_threshold %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= tag("a", href:countdown_path("#{school.name}")) %>
+        <div class="progress progress-striped active">
+          <% if percent_signed_up < 13 %>
+            <% percent_signed_up += 3 %>
+            <%= tag("div", class: "progress-bar #{school.name}", role: "progressbar", aria_valuenow: "#{school.signups}", aria_valuemin: "0", aria_valuemax: "#{@unlock_threshold}", style: "width: #{percent_signed_up}%") %>
+            </div>
+            <%= tag("div", class: "progress-bar-less", style: "margin-left: #{percent_signed_up}%") %>
+              <%= "#{school.proper_name == 'University of Pennsylvania' ? 'Penn' : school.proper_name}" %>
+            </div>
+          <% else %>
+            <%= tag("div", class: "progress-bar #{school.name}", role: "progressbar", aria_valuenow: "#{school.signups}", aria_valuemin: "0", aria_valuemax: "#{@unlock_threshold}", style: "width: #{percent_signed_up}%") %>
+              <div class="progress-bar-more">
+                <%= "#{school.proper_name == 'University of Pennsylvania' ? 'Penn' : school.proper_name}" %>
+              </div>
+            </div>
+          <% end %>
         </div>
-      </div>
-    </a>
+      </a>
+    </div>
   </div>
-</div>
 <% end %>

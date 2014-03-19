@@ -24,6 +24,10 @@ body {
   width: 100%;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 // School colors 
 
 .princeton {
@@ -66,10 +70,20 @@ body {
   color: white;
 }
 
-.progress-bar-name {
+.progress-bar-more {
   height: inherit;
-  padding: 40px;
+  padding-top: 40px;
+  padding-right: 10px;
   font-size: 24px;
+  text-align: right;
+}
+
+.progress-bar-less {
+  height: inherit;
+  padding-top: 35px;
+  padding-left: 10px;
+  font-size: 24px;
+  color: black;
 }
 
 .cover {
@@ -143,16 +157,4 @@ body {
 
 .how-it-works h2 {
   text-align: center;
-}
-
-.footer {
-  margin-top: 15px;
-}
-
-.footer a {
-  color: white;
-}
-
-.footer a:hover {
-  text-decoration: none;
 }
