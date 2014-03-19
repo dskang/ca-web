@@ -1,6 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
-    @schools = %w(princeton harvard yale brown upenn columbia dartmouth cornell)
+    @schools = School.all()
+    @unlock_threshold = School::UNLOCK_THRESHOLD
   end
 
   def about

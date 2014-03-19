@@ -1,20 +1,13 @@
+<% @schools.each do |school| %>
 <div class="row">
-  <% number_of_rows = 2 %>
-  <% number_of_columns = @schools.size/number_of_rows %>
-  <% number_of_rows.times do |row_number| %>
-    <% @schools[(row_number * number_of_columns)...((row_number + 1) * number_of_columns)].each do |school_name| %>
-      <%= tag("div", class: "col-md-#{12/number_of_columns}") %>
-        <div class="row text-center padded-icon">
-          <div class="col-md-12">
-            <%= image_tag("#{school_name}.jpg", :alt => "#{school_name}") %>
-          </div>
-        </div>
-        <div class="row text-center">
-          <div class="col-md-12">
-            <%= link_to "#{school_name == "upenn" ? "Penn" : school_name.titleize}", countdown_path("#{school_name}"), class: "go-btn btn btn-success btn-xlg btn-block"%>
-          </div>
+  <div class="col-md-12">
+    <%= tag("a", href:countdown_path("#{school.name}")) %>
+      <div class="progress progress-striped active">
+        <%= tag("div", class: "progress-bar #{school.name}", role:"progressbar", aria_valuenow: "#{school.signups}", aria_valuemin: "0", aria_valuemax: "#{@unlock_threshold}", style: "width: #{@unlock_threshold * 50/@unlock_threshold}%") %>
+          <%= "#{school.proper_name}" %>
         </div>
       </div>
-    <% end %>
-  <% end %>
+    </a>
+  </div>
 </div>
+<% end %>
