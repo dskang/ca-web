@@ -1,6 +1,9 @@
 <body class="cover">
   <div class="wrapper">
     <div class="container">
+      <div class="row text-center padded-icon">
+        <i class="fa fa-lock large-icon"></i>
+      </div>
       <div class="row text-center unlock-header">
         <div class="col-md-12">
           <h1 class="hook"><%= @school.proper_name %> needs <%= pluralize(School::UNLOCK_THRESHOLD - @school.signups, "more signup") %> to be unlocked!</h1>
@@ -10,11 +13,12 @@
         <div class="col-md-12">
         <%= form_for :countdown_user, url: countdown_user_confirmation_path do |f| %>
           <div class="input-group input-group-lg text-center">
-            <%= f.text_field :email, placeholder: "Your #{@school.name}.edu email", class: "form-control"%>
-            <span class="input-group-addon"><%="@#{@school.name}.edu"%></span>
+            <span class="input-group-addon"></span>
+            <%= f.text_field :email, placeholder: "Your #{@school.name}.edu email", class: "form-control text-center"%>
+            <span class="input-group-addon"></span>
           </div>
           <%= f.hidden_field :school_id, value: @school.id %>
-          <%= f.submit "Unlock #{@school.proper_name}", class: "go-btn btn btn-success btn-xlg btn-block" %>
+          <%= f.submit "Unlock", class: "go-btn btn btn-success btn-xlg btn-block" %>
         <% end %>
         </div>
       </div>

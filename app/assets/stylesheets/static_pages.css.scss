@@ -71,23 +71,10 @@ a.progress-bar-link:hover {
   background-size: cover;
 }
 
-@media (min-width: 768px) {
-  .container {
-    border-radius: 15px;
-  }
-}
-
 .wrapper {
   /* centering container vertically */
   display: table-cell;
   vertical-align: middle;
-}
-
-.container {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #FFF;
-  padding: 30px;
-  padding-bottom: 15px;
 }
 
 .header {
