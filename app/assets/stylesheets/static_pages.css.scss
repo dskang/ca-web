@@ -2,15 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.school-logo:hover {
-  opacity: 0.7;
-  -webkit-transition: all 0.5s linear;
-     -moz-transition: all 0.5s linear;
-      -ms-transition: all 0.5s linear;
-       -o-transition: all 0.5s linear;
-          transition: all 0.5s linear;
-}
-
 body {
   font-family: Helvetica, Arial, sans-serif;
   /* centering container vertically */
@@ -18,6 +9,58 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
+}
+
+a.progress-bar-link:hover {
+  text-decoration: none;
+}
+
+// School colors
+
+.princeton {
+  background-color: #ff8f00;
+  color: black;
+}
+
+.yale {
+  background-color: #0f4d92;
+  color: white;
+}
+
+.columbia {
+  background-color: #75aadb;
+  color: white;
+}
+
+.harvard {
+  background-color: #a41034;
+  color: white;
+}
+
+.cornell {
+  background-color: #b31b1b;
+  color: white;
+}
+
+.brown {
+  background-color: #321414;
+  color: white;
+}
+
+.upenn {
+  background-color: #01256e;
+  color: #f1f1f1;
+}
+
+.dartmouth {
+  background-color: #00693e;
+  color: white;
+}
+
+.progress-bar-text {
+  height: inherit;
+  padding-top: 40px;
+  font-size: 24px;
 }
 
 .cover {
@@ -53,6 +96,14 @@ body {
   border-bottom: 1px solid #666;
 }
 
+.school-lock-icon {
+  font-size: 6em;
+  color: black;
+  position: relative;
+  left: 90%;
+  top: 12%;
+}
+
 .large-icon {
   font-size: 10em;
 }
@@ -86,21 +137,9 @@ body {
 
 .how-it-works {
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 40px;
 }
 
 .how-it-works h2 {
   text-align: center;
-}
-
-.footer {
-  margin-top: 15px;
-}
-
-.footer a {
-  color: white;
-}
-
-.footer a:hover {
-  text-decoration: none;
 }
