@@ -2,8 +2,10 @@
   <% percent_signed_up = [(school.signups/@unlock_threshold), 3].max %>
   <% if percent_signed_up < 13 %>
     <% progress_bar_text_style = "margin-left: 100%; padding-left: 10px; color:black"%>
-  <% elsif percent_signed_up < 100 %>
+  <% elsif percent_signed_up < 94 %>
     <% progress_bar_text_style = "padding-right: 10px; text-align: right" %>
+  <% elsif percent_signed_up < 100 %>
+    <% progress_bar_text_style = "position: absolute; right: 8%" %>
   <% else %>
     <% percent_signed_up = 100 %>
     <% progress_bar_text_style = "text-align: center" %>
