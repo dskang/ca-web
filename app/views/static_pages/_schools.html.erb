@@ -2,7 +2,7 @@
 <% percent_signed_up = school.signups/@unlock_threshold %>
   <div class="row">
     <div class="col-md-12">
-      <%= tag("a", href:countdown_path("#{school.name}")) %>
+      <%= tag("a", href: countdown_path("#{school.name}"), class: "progress-bar-link") %>
         <div class="progress progress-striped active">
           <% if percent_signed_up < 13 %>
             <% percent_signed_up += 3 %>
