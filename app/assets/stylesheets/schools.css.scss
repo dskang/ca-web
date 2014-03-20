@@ -6,15 +6,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.school-logo:hover {
-  opacity: 0.7;
-  -webkit-transition: all 0.5s linear;
-     -moz-transition: all 0.5s linear;
-      -ms-transition: all 0.5s linear;
-       -o-transition: all 0.5s linear;
-          transition: all 0.5s linear;
-}
-
 body {
   font-family: Helvetica, Arial, sans-serif;
   /* centering container vertically */
@@ -70,20 +61,10 @@ a.progress-bar-link:hover {
   color: white;
 }
 
-.progress-bar-more {
+.progress-bar-text {
   height: inherit;
   padding-top: 40px;
-  padding-right: 10px;
   font-size: 24px;
-  text-align: right;
-}
-
-.progress-bar-less {
-  height: inherit;
-  padding-top: 35px;
-  padding-left: 10px;
-  font-size: 24px;
-  color: black;
 }
 
 .cover {
@@ -117,6 +98,14 @@ a.progress-bar-link:hover {
   margin-top: 60px;
   margin-bottom: 20px;
   border-bottom: 1px solid #666;
+}
+
+.school-lock-icon {
+  font-size: 6em;
+  color: black;
+  position: relative;
+  left: 90%;
+  top: 12%;
 }
 
 .large-icon {

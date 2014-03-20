@@ -16,7 +16,12 @@ img {
 }
 
 .progress:hover {
-  background-color: rgba(255, 255, 255, 0.8);
+  opacity: 0.8;
+  -webkit-transition: all 0.1s linear;
+     -moz-transition: all 0.1s linear;
+      -ms-transition: all 0.1s linear;
+       -o-transition: all 0.1s linear;
+          transition: all 0.1s linear;
 }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
