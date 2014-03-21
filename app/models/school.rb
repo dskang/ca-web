@@ -1,5 +1,6 @@
 class School < ActiveRecord::Base
   has_many :countdown_users
+  has_many :users
 
   validate :name, presence: true
 

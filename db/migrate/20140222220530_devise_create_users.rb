@@ -5,6 +5,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # User information for Campus Anonymous
       t.string  :name
       t.integer :class_year
+      t.belongs_to :school
 
       ## Database authenticatable
       t.string :email,              :null => false, :default => ""
