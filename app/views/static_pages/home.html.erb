@@ -1,23 +1,9 @@
-<div class="row">
-  <div class="col-xs-12 text-center">
-    <h1>Pick your school!</h1>
+<body class="cover">
+  <div class="wrapper">
+    <div class="container-fluid">
+      <%= render "how_it_works" %>
+      <%= render "schools" %>
+      <%= render "footer" %>
+    </div>
   </div>
-</div>
-<% schools = %w(princeton harvard yale brown upenn columbia dartmouth cornell) %>
-<div class="row">
-  <% schools[0...4].each do |school| %>
-  <div class="col-md-3">
-    <%= link_to image_tag("#{school}.png", class: "school-logo"), countdown_path(school) %>
-  </div>
-  <% end %>
-</div>
-<div class="row">
-  <% schools[4...8].each do |school| %>
-  <div class="col-md-3">
-    <%= link_to image_tag("#{school}.png", class: "school-logo"), countdown_path(school) %>
-  </div>
-  <% end %>
-</div>
-<footer class="row text-center">
-  <h2> Not an Ivy? Click here!</h2>
-</footer>
+</body>
