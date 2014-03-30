@@ -7,6 +7,11 @@
   }
 }
 
+.btn:hover {
+  text-decoration: none;
+  color: white;
+}
+
 .container {
   background-color: rgba(0, 0, 0, 0.8);
   color: #FFF;
@@ -23,13 +28,6 @@
 
 .progress {
   height: 100px;
-}
-
-.progress:hover {
-  opacity: 0.8;
-  -webkit-transition: all 0.1s linear;
-     -moz-transition: all 0.1s linear;
-      -ms-transition: all 0.1s linear;
-       -o-transition: all 0.1s linear;
-          transition: all 0.1s linear;
+  text-color: white;
+  background-color: gray;
 }

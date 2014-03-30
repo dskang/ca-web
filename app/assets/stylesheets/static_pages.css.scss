@@ -11,50 +11,56 @@ body {
   width: 100%;
 }
 
-a.progress-bar-link:hover {
+a.unlock-link:hover {
   text-decoration: none;
+}
+
+.signup-progress {
+  position: absolute;
+  top: 42px;
+  z-index: 2;
+  text-align: center;
+  width: 100%;
+  font-size: 2em;
+}
+
+.homepage-school-name {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 // School colors
 
 .princeton {
   background-color: #ff8f00;
-  color: black;
 }
 
 .yale {
   background-color: #0f4d92;
-  color: white;
 }
 
 .columbia {
   background-color: #75aadb;
-  color: white;
 }
 
 .harvard {
   background-color: #a41034;
-  color: white;
 }
 
 .cornell {
   background-color: #b31b1b;
-  color: white;
 }
 
 .brown {
   background-color: #321414;
-  color: white;
 }
 
 .upenn {
   background-color: #01256e;
-  color: #f1f1f1;
 }
 
 .dartmouth {
   background-color: #00693e;
-  color: white;
 }
 
 .progress-bar-text {
@@ -111,6 +117,7 @@ a.progress-bar-link:hover {
 
 .go-btn {
   margin-top: 20px;
+  color: white;
 }
 
 .btn-xlg {
