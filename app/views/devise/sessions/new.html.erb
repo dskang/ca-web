@@ -1,7 +1,7 @@
-<% content_for(:form_title, "Sign Into Your Campus Anonymous Account") %>
+<% content_for(:form_title, "Create Your Campus Anonymous Account") %>
 <div class="row text-center">
   <div class="col-md-12">
-    <%= bootstrap_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <%= bootstrap_form_for(resource, style: :horizontal, :as => resource_name, :url => session_path(resource_name)) do |f| %>
       <%= f.email_field :email, :autofocus => true %>
       <%= f.password_field :password %>
       <%= f.check_box :remember_me %>

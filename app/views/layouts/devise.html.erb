@@ -18,6 +18,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="cover">
+  <%= render 'layouts/messages' %>
   <div class="wrapper">
     <div class="container">
       <% if content_for?(:form_title) %>
@@ -27,7 +28,6 @@
           </div>
         </div>
       <% end %>
-      <%= render 'layouts/messages' %>
       <%= yield %>
     </div>
   </div>
