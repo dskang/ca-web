@@ -1,8 +1,4 @@
-<div class="row text-center">
-  <div class="col-md-12">
-    <h1 class="hook">Sign up</h1>
-  </div>
-</div>
+<% content_for(:form_title, "Create Your Campus Anonymous Account") %>
 <div class="row text-center">
   <div class="col-md-12">
     <%= bootstrap_form_for(resource, style: :horizontal, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -11,7 +7,7 @@
       <%= f.email_field :email, :autofocus => true %>
       <%= f.password_field :password %>
       <%= f.password_field :password_confirmation %>
-      <%= f.submit "Log In", class: "go-btn btn btn-success btn-xlg btn-block" %>
+      <%= f.submit "Sign Up", class: "go-btn btn btn-success btn-xlg btn-block" %>
     <% end %>
     <%= render "devise/shared/links" %>
   </div>

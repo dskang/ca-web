@@ -20,6 +20,13 @@
 <body class="cover">
   <div class="wrapper">
     <div class="container">
+      <% if content_for?(:form_title) %>
+        <div class="row text-center">
+          <div class="col-md-12">
+            <h1 class="devise-header"><%= yield :form_title %></h1>
+          </div>
+        </div>
+      <% end %>
       <%= render 'layouts/messages' %>
       <%= yield %>
     </div>
