@@ -3,7 +3,7 @@
 en:
   devise:
     confirmations:
-      countdown_user:
+      user:
         invalid_email: "Please enter a valid %{school}.edu email address."
         confirmation_already_sent: "We've already sent a confirmation link to this email address. Please check your email."
         already_confirmed: "This email address has already been confirmed."

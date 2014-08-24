@@ -4,8 +4,7 @@ Ca::Application.routes.draw do
   get "/about" => "static_pages#about"
   get "/unlock/:school", to: "schools#countdown", as: :countdown
   get "/share/:school", to: "schools#share", as: :share
-  devise_for :countdown_users, controllers: { confirmations: "countdown_users/confirmations" }
-  devise_for :users
+  devise_for :users, controllers: { confirmations: "users/confirmations" }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

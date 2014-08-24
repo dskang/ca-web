@@ -13,19 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140310010354) do
 
-  create_table "countdown_users", force: true do |t|
-    t.string   "email"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.integer  "school_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "countdown_users", ["confirmation_token"], name: "index_countdown_users_on_confirmation_token", unique: true
-  add_index "countdown_users", ["email"], name: "index_countdown_users_on_email", unique: true
-
   create_table "schools", force: true do |t|
     t.string   "name"
     t.integer  "signups",    default: 0
@@ -38,6 +25,7 @@ ActiveRecord::Schema.define(version: 20140310010354) do
   create_table "users", force: true do |t|
     t.string   "name"
     t.integer  "class_year"
+    t.integer  "school_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
