@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   belongs_to :school
 
+  validates :email, presence: true, length: { maximum: 50 }
+
   validate :email_must_belong_to_school_in_database
 
   def email_must_belong_to_school_in_database
@@ -14,7 +16,7 @@ class User < ActiveRecord::Base
       errors.add(:email, "email must be a valid Ivy League email address")
     else
       school_name = pattern.match(email)["school_name"]
-      unless School.all.map{|school| school.name}.include? school_name
+      unless School.find_by name: school_name
         errors.add(:email, "email must be a valid Ivy League email address")
       end
     end
