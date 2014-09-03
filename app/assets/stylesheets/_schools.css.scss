@@ -6,19 +6,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.unlock-header {
-  margin-bottom: 30px;
-}
-
 .flash-wrapper {
   display: table-caption;
   position: fixed;
   width: 100%;
 }
 
+// Countdown
+.signup-hook {
+  margin-bottom: 30px;
+}
+
+// Share
 .btn-share {
   padding: 20px 25px;
   font-size: 24px;
   line-height: 1.33;
   border-radius: 8px;
+}
+
+.share-title {
+  margin-bottom: 20px;
 }

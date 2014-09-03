@@ -8,27 +8,29 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
+ * Sass's @import directive preferred over Sprockets' require directives:
+ * https://github.com/rails/sass-rails#important-note
  */
 
 @import "bootstrap";
+@import "school_colors";
+@import "static_pages";
+@import "schools";
 
 .btn:hover {
   text-decoration: none;
   color: white;
 }
 
-@media (min-width: 768px) {
-  .container {
-    border-radius: 15px;
-  }
-}
-
-.container, .container-fluid {
+.container {
+  max-width: 960px;
   background-color: rgba(0, 0, 0, 0.8);
   color: #FFF;
-  padding: 30px;
+  padding: 30px 50px;
+  @media (min-width: $screen-sm-min) {
+    border-radius: 15px;
+    margin: 50px auto;
+  }
 }
 
 // Progress bar
