@@ -6,6 +6,10 @@ class School < ActiveRecord::Base
 
   UNLOCK_THRESHOLD = 500
 
+  def percent_signed_up
+    signups.to_f / UNLOCK_THRESHOLD * 100
+  end
+
   def proper_name
     case name
     when "upenn"
