@@ -11,3 +11,39 @@
  *= require_self
  *= require_tree .
  */
+
+@import "bootstrap";
+
+.btn:hover {
+  text-decoration: none;
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .container {
+    border-radius: 15px;
+  }
+}
+
+.container, .container-fluid {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #FFF;
+  padding: 30px;
+}
+
+// Progress bar
+$progress-bar-height: 70px;
+.progress {
+  position: relative;
+  height: $progress-bar-height;
+  background-color: #bbb;
+}
+
+.progress-text {
+  display: block;
+  position: absolute;
+  width: 100%;
+  line-height: $progress-bar-height;
+  font-size: 1.5em;
+  text-align: center;
+}

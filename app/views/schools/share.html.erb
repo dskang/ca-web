@@ -3,7 +3,10 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
+          <h1 class="share-title">You're one step closer to unlocking <%= @school.proper_name %>!</h1>
           <%= render partial: "schools/progress_bar", locals: {school: @school} %>
+          <p class="lead">Thanks for signing up! We'll send you an email when <%= @school.proper_name %> is unlocked.</p>
+          <p class="lead">Let your friends know about Campus Anonymous to unlock <%= @school.proper_name %> even faster!</p>
         </div>
       </div>
     </div>
