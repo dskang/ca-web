@@ -4,13 +4,7 @@
       <h2><%= school.proper_name == 'University of Pennsylvania' ? 'Penn' : school.proper_name %></h2>
     </div>
     <div class="col-md-8">
-      <div class="progress progress-striped active">
-        <%= tag("div", class: "progress-bar #{school.name}", role: "progressbar", aria_valuenow: school.signups, aria_valuemin: 0, aria_valuemax: School::UNLOCK_THRESHOLD, style: "width: #{school.percent_signed_up}%") %>
-          <div class="signup-progress">
-            <%= "#{school.signups} / #{@unlock_threshold} required signups" %>
-          </div>
-        </div>
-      </div>
+      <%= render partial: "schools/progress_bar", locals: {school: school} %>
     </div>
     <div class="col-md-2">
       <%= tag("a", href: countdown_path("#{school.name}"), class: "unlock-link") %>

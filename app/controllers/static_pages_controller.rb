@@ -1,7 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @schools = School.all()
-    @unlock_threshold = School::UNLOCK_THRESHOLD
+    @schools = School.order(signups: :desc)
   end
 
   def about

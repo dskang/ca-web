@@ -1,0 +1,7 @@
+<div class="progress progress-striped active">
+  <%= tag("div", class: "progress-bar #{school.name}", role: "progressbar", aria_valuenow: school.signups, aria_valuemin: 0, aria_valuemax: School::UNLOCK_THRESHOLD, style: "width: #{school.percent_signed_up}%") %>
+    <div class="signup-progress">
+      <%= "#{school.signups} / #{School::UNLOCK_THRESHOLD} required signups" %>
+    </div>
+  </div>
+</div>
