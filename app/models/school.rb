@@ -13,7 +13,7 @@ class School < ActiveRecord::Base
   def proper_name
     case name
     when "upenn"
-      "University of Pennsylvania"
+      "Penn"
     else 
       name.titleize
     end
