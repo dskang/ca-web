@@ -2,7 +2,7 @@ class School < ActiveRecord::Base
   has_many :countdown_users
   has_many :users
 
-  validate :name, presence: true
+  validate :name, presence: true, uniqueness: true
 
   UNLOCK_THRESHOLD = 500
 
@@ -17,5 +17,11 @@ class School < ActiveRecord::Base
 
   def unlocked?
     signups >= UNLOCK_THRESHOLD
+  end
+
+  # use the name as the slug
+  # https://gist.github.com/cdmwebs/1209732
+  def to_param
+    name.parameterize
   end
 end

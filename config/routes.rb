@@ -3,6 +3,7 @@ Ca::Application.routes.draw do
   root "static_pages#home"
   get "/about" => "static_pages#about"
   get "/unlock/:school", to: "schools#countdown", as: :countdown
+  get "/share/:school", to: "schools#share", as: :share
   devise_for :countdown_users, controllers: { confirmations: "countdown_users/confirmations" }
   devise_for :users
 

@@ -18,7 +18,7 @@ class CountdownUsers::ConfirmationsController < Devise::ConfirmationsController
     end
 
     if countdown_user.school
-      redirect_to countdown_path(countdown_user.school.name)
+      redirect_to countdown_path(countdown_user.school)
     else
       redirect_to :root
     end
@@ -40,7 +40,7 @@ class CountdownUsers::ConfirmationsController < Devise::ConfirmationsController
         countdown_user.school.increment!(:signups)
         set_flash_message :notice, :confirmed
       end
-      redirect_to countdown_path(countdown_user.school.name)
+      redirect_to share_path(countdown_user.school)
     end
   end
 
