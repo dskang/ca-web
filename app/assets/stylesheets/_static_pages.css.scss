@@ -74,17 +74,17 @@ a.unlock-link:hover {
   text-shadow: 1px 1px 1px #000;
 }
 
-.go-btn {
-  margin-top: 20px;
+.btn-home-unlock {
   color: white;
+  padding: 18px 20px;
+  font-size: 18px;
+  border-radius: 8px;
 }
 
-.btn-xlg {
+.btn-countdown-unlock {
+  margin-top: 20px;
   padding: 18px 28px;
   font-size: 22px;
-  line-height: normal;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
   border-radius: 8px;
 }
 

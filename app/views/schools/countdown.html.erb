@@ -14,7 +14,7 @@
               <span class="input-group-addon"></span>
             </div>
             <%= f.hidden_field :school_id, value: @school.id %>
-            <%= f.submit "Unlock", class: "go-btn btn #{@school.name} btn-xlg btn-block" %>
+            <%= f.submit "Unlock", class: "btn #{@school.name} btn-countdown-unlock btn-block" %>
           <% end %>
         </div>
       </div>
