@@ -22,10 +22,12 @@ a.unlock-link:hover {
 }
 
 .homepage-school-name {
-  text-align: center;
+  text-align: left;
   @media (min-width: $screen-md-min) {
     text-align: right;
   }
+  line-height: 70px;
+  margin: 0;
 }
 
 .cover {
@@ -70,14 +72,21 @@ a.unlock-link:hover {
 }
 
 .hook {
-  font-size: 42px;
+  font-size: 34px;
   text-shadow: 1px 1px 1px #000;
+}
+
+.school-row {
+  margin-bottom: 50px;
+  @media (min-width: $screen-md-min) {
+    margin-bottom: 0;
+  }
 }
 
 .btn-home-unlock {
   color: white;
-  padding: 18px 20px;
-  font-size: 18px;
+  padding: 22px 20px;
+  font-size: 17px;
   border-radius: 8px;
 }
 
@@ -91,8 +100,4 @@ a.unlock-link:hover {
 .how-it-works {
   margin-top: 10px;
   margin-bottom: 40px;
-}
-
-.how-it-works h2 {
-  text-align: center;
 }
