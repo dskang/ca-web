@@ -7,12 +7,20 @@ $princeton: #ff8f00;
 $upenn: #01256e;
 $yale: #0f4d92;
 
+.brown {
+  background-color: $brown;
+}
+
 .btn.brown {
   background-color: $brown;
   border: darken($brown, 5%);
   &:hover {
     background-color: darken($brown, 5%);
   }
+}
+
+.columbia {
+  background-color: $columbia;
 }
 
 .btn.columbia {
@@ -23,12 +31,20 @@ $yale: #0f4d92;
   }
 }
 
+.cornell {
+  background-color: $cornell;
+}
+
 .btn.cornell {
   background-color: $cornell;
   border: darken($cornell, 5%);
   &:hover {
     background-color: darken($cornell, 5%);
   }
+}
+
+.dartmouth {
+  background-color: $dartmouth;
 }
 
 .btn.dartmouth {
@@ -39,12 +55,20 @@ $yale: #0f4d92;
   }
 }
 
+.harvard {
+  background-color: $harvard;
+}
+
 .btn.harvard {
   background-color: $harvard;
   border: darken($harvard, 5%);
   &:hover {
     background-color: darken($harvard, 5%);
   }
+}
+
+.princeton {
+  background-color: $princeton;
 }
 
 .btn.princeton {
@@ -55,12 +79,20 @@ $yale: #0f4d92;
   }
 }
 
+.upenn {
+  background-color: $upenn;
+}
+
 .btn.upenn {
   background-color: $upenn;
   border: darken($upenn, 5%);
   &:hover {
     background-color: darken($upenn, 5%);
   }
+}
+
+.yale {
+  background-color: $yale;
 }
 
 .btn.yale {
