@@ -12,20 +12,19 @@
  * https://github.com/rails/sass-rails#important-note
  */
 
+$text-color: white;
+$link-color: white;
+$link-hover-color: white;
+$btn-default-color: white;
+
 @import "bootstrap";
 @import "school_colors";
 @import "static_pages";
 @import "schools";
 
-.btn:hover {
-  text-decoration: none;
-  color: white;
-}
-
 .container {
   max-width: 960px;
   background-color: rgba(0, 0, 0, 0.8);
-  color: #FFF;
   padding: 30px 50px;
   @media (min-width: $screen-sm-min) {
     border-radius: 15px;
