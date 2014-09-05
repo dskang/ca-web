@@ -50,30 +50,14 @@ a.unlock-link:hover {
   border-bottom: 1px solid #666;
 }
 
-.school-lock-icon {
-  font-size: 6em;
-  color: black;
-  position: absolute;
-  right: 3%;
-  top: 12%;
-}
-
 .large-icon {
   font-size: 10em;
-}
-
-.padded-text {
-  margin: 0 2px;
-}
-
-.padded-icon {
-  padding-top: 20px;
-  margin-bottom: 0px;
 }
 
 .hook {
   font-size: 34px;
   text-shadow: 1px 1px 1px #000;
+  margin-bottom: 30px;
 }
 
 .school-row {
@@ -98,6 +82,7 @@ a.unlock-link:hover {
 }
 
 .how-it-works {
+  text-align: center;
   margin-top: 10px;
   margin-bottom: 40px;
 }
