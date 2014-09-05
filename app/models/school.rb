@@ -4,7 +4,7 @@ class School < ActiveRecord::Base
 
   validate :name, presence: true, uniqueness: true
 
-  UNLOCK_THRESHOLD = 300
+  UNLOCK_THRESHOLD = 200
 
   def percent_signed_up
     signups.to_f / UNLOCK_THRESHOLD * 100
@@ -14,7 +14,7 @@ class School < ActiveRecord::Base
     case name
     when "upenn"
       "Penn"
-    else 
+    else
       name.titleize
     end
   end
