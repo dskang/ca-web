@@ -2,6 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$navbar-height: 80px;
+
 body {
   font-family: Helvetica, Arial, sans-serif;
   /* centering container vertically */
@@ -9,11 +11,14 @@ body {
   position: absolute;
   height: 100%;
   width: 100%;
+  padding-top: $navbar-height;
 }
 
-$navbar-height: 80px;
 .navbar {
-  display: table-caption;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   border-radius: 0;
   background-color: #111;
   margin-bottom: 0;
