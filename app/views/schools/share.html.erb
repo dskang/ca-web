@@ -12,11 +12,12 @@
               <button type="button" id="fb-share" class="btn btn-primary btn-share btn-block">Share on Facebook</button>
             </div>
             <div class="col-md-6">
-              <button type="button" class="btn btn-default btn-share btn-block">Share on Twitter</button>
+              <a href='<%= "http://twitter.com/intent/tweet?#{@twitter_params}" %>' role="button" class="btn btn-default btn-share btn-block">Share on Twitter</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <script src="//platform.twitter.com/widgets.js"></script>
 </body>
