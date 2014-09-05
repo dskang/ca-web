@@ -11,14 +11,21 @@ body {
   width: 100%;
 }
 
+$navbar-height: 80px;
 .navbar {
   display: table-caption;
   border-radius: 0;
   background-color: #111;
   margin-bottom: 0;
+  min-height: $navbar-height;
 }
 
 .navbar-brand {
+  font-family: 'Bebas Neue', Helvetica, sans-serif;
+  font-size: 60px;
+  padding: 0;
+  height: $navbar-height;
+  line-height: $navbar-height;
   position: absolute;
   width: 100%;
   text-align: center;
