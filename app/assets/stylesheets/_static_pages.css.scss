@@ -32,7 +32,7 @@ body {
 
 .navbar-brand {
   font-family: 'Bebas Neue', Helvetica, sans-serif;
-  font-size: 50px;
+  font-size: 45px;
   @media (min-width: $screen-sm-min) {
     font-size: 60px;
   }
@@ -45,7 +45,7 @@ body {
   margin-left: -15px;
 }
 
-.navbar-inverse .navbar-brand {
+.navbar-brand {
   color: #efefef;
 }
 
