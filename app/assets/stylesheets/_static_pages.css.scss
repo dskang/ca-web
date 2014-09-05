@@ -11,6 +11,24 @@ body {
   width: 100%;
 }
 
+.navbar {
+  display: table-caption;
+  border-radius: 0;
+  background-color: #111;
+  margin-bottom: 0;
+}
+
+.navbar-brand {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  margin-left: -15px;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #efefef;
+}
+
 .devise-header {
   font-size: 42px;
   margin-bottom: 20px;
