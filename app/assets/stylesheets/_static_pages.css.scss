@@ -27,7 +27,10 @@ body {
 
 .navbar-brand {
   font-family: 'Bebas Neue', Helvetica, sans-serif;
-  font-size: 60px;
+  font-size: 50px;
+  @media (min-width: $screen-sm-min) {
+    font-size: 60px;
+  }
   padding: 0;
   height: $navbar-height;
   line-height: $navbar-height;
