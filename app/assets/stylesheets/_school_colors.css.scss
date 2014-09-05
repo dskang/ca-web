@@ -1,31 +1,72 @@
-.princeton {
-  background-color: #ff8f00;
+$brown: #321414;
+$columbia: #75aadb;
+$cornell: #b31b1b;
+$dartmouth: #00693e;
+$harvard: #a41034;
+$princeton: #ff8f00;
+$upenn: #01256e;
+$yale: #0f4d92;
+
+.btn.brown {
+  background-color: $brown;
+  border: darken($brown, 5%);
+  &:hover {
+    background-color: darken($brown, 5%);
+  }
 }
 
-.yale {
-  background-color: #0f4d92;
+.btn.columbia {
+  background-color: $columbia;
+  border: darken($columbia, 5%);
+  &:hover {
+    background-color: darken($columbia, 5%);
+  }
 }
 
-.columbia {
-  background-color: #75aadb;
+.btn.cornell {
+  background-color: $cornell;
+  border: darken($cornell, 5%);
+  &:hover {
+    background-color: darken($cornell, 5%);
+  }
 }
 
-.harvard {
-  background-color: #a41034;
+.btn.dartmouth {
+  background-color: $dartmouth;
+  border: darken($dartmouth, 5%);
+  &:hover {
+    background-color: darken($dartmouth, 5%);
+  }
 }
 
-.cornell {
-  background-color: #b31b1b;
+.btn.harvard {
+  background-color: $harvard;
+  border: darken($harvard, 5%);
+  &:hover {
+    background-color: darken($harvard, 5%);
+  }
 }
 
-.brown {
-  background-color: #321414;
+.btn.princeton {
+  background-color: $princeton;
+  border: darken($princeton, 5%);
+  &:hover {
+    background-color: darken($princeton, 5%);
+  }
 }
 
-.upenn {
-  background-color: #01256e;
+.btn.upenn {
+  background-color: $upenn;
+  border: darken($upenn, 5%);
+  &:hover {
+    background-color: darken($upenn, 5%);
+  }
 }
 
-.dartmouth {
-  background-color: #00693e;
+.btn.yale {
+  background-color: $yale;
+  border: darken($yale, 5%);
+  &:hover {
+    background-color: darken($yale, 5%);
+  }
 }

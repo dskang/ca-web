@@ -30,10 +30,20 @@
   margin-bottom: 20px;
 }
 
+$facebook: #3b5998;
 .btn-facebook {
-  background-color: #3b5998;
+  background-color: $facebook;
+  border: darken($facebook, 5%);
+  &:hover {
+    background-color: darken($facebook, 5%);
+  }
 }
 
+$twitter: #55acee;
 .btn-twitter {
-  background-color: #55acee;
+  background-color: $twitter;
+  border: darken($twitter, 5%);
+  &:hover {
+    background-color: darken($twitter, 5%);
+  }
 }
