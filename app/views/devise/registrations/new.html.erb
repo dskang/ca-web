@@ -1,5 +1,3 @@
-<% @school = School.find_by(name: params[:school]) %>
-
 <div class="row text-center padded-icon">
   <i class="fa fa-lock large-icon"></i>
 </div>
@@ -16,7 +14,7 @@
       <%= f.email_field :email, :autofocus => true %>
       <%= f.password_field :password %>
       <%= f.password_field :password_confirmation %>
-      <%= f.hidden_field :school, :value => params[:school] %>
+      <%= f.hidden_field :school_id, :value => @school.id %>
       <%= f.submit "Sign Up", class: "go-btn btn #{@school.name} btn-xlg btn-block" %>
     <% end %>
     <%= render "devise/shared/links" %>
