@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   belongs_to :school
 
-  validates :email, presence: true, length: { maximum: 50 }
+  validates :email, presence: true, length: { maximum: 50 }, uniqueness: true
 
   validate :email_must_belong_to_school_in_database
 
