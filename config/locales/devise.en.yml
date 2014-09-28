@@ -39,6 +39,7 @@ en:
     registrations:
       user:
         invalid_email: "Please enter a valid %{school}.edu email address."
+        invalid_class_year: "Please enter a valid class year (you must be a current student to use this site)."
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."

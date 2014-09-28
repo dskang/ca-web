@@ -25,12 +25,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
         @minimum_password_length = resource_class.password_length.min
       end
       school = School.find_by(:id => sign_up_params[:school_id])
-      set_flash_message :error, :invalid_email, school: school.name
+      display_error_message resource, school
       redirect_to new_user_registration_path(school:school)
     end
   end
 
   def show
     super
+  end
+
+  private
+
+  def display_error_message resource, school
+    error = resource.errors.messages.keys.first
+    if error == :class_year
+      error_message = :invalid_class_year
+    elsif error == :email
+      error_message = :invalid_email
+    end
+
+    set_flash_message :error, error_message, school: school.name
   end
 end
