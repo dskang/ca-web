@@ -2,9 +2,13 @@
   <%= render "nav" %>
   <div class="wrapper">
     <div class="container">
-      <%= render "how_it_works" %>
-      <%= render "schools" %>
-      <%= render "footer" %>
+      <% if user_signed_in? %>
+        <%= render "schools/share" %>
+      <% else %>
+        <%= render "how_it_works" %>
+        <%= render "schools" %>
+        <%= render "footer" %>
+      <% end %>
     </div>
   </div>
 </body>
