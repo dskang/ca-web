@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   belongs_to :school
 
   validate :class_year_must_be_reasonable
-  validate :email_must_belong_to_school_in_database
+  validate :email_must_match_unlock_page
   validates :email, presence: true, length: { maximum: 50 }, uniqueness: true
 
   def class_year_must_be_reasonable
@@ -17,14 +17,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  def email_must_belong_to_school_in_database
+  def email_must_match_unlock_page
     pattern = /\A[\w+\-.]+@(?<school_name>[\w+\-.]+).edu\z/i
-    p pattern.match(email)
     if pattern.match(email).nil?
       errors.add(:email, "invalid email")
     else
       school_name = pattern.match(email)["school_name"]
-      unless School.find_by name: school_name
+      unless School.find_by(id: school_id).name == school_name
         errors.add(:email, "invalid email")
       end
     end

@@ -1,0 +1,42 @@
+<% if user_signed_in? %>
+  <% @school = current_user.school %>
+<% end %>
+
+<div class="row text-center">
+  <div class="col-md-12">
+    <% if user_signed_in? and current_user.school.unlocked? %>
+      <h1 class="share-title">Welcome back, <%= current_user.name.split(" ").first.titleize %>! Feel free to start chatting below or tell your friends about all the fun.
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" id="chat-room" class="btn btn-go btn-share btn-block">Start chatting</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <button type="button" id="fb-share" class="btn btn-facebook btn-share btn-block">Share on Facebook</button>
+        </div>
+        <div class="col-md-6">
+          <a href='<%= "http://twitter.com/intent/tweet?#{@twitter_params}" %>' role="button" class="btn btn-twitter btn-share btn-block">Share on Twitter</a>
+        </div>
+      </div>
+    <% else %>
+      <% if user_signed_in? and not current_user.school.unlocked? %>
+        <h1 class="share-title">Welcome back, <%= current_user.name.split(" ").first.titleize %>! You've done your part to help unlock <%= @school.proper_name %>.</h1>
+      <% else %>
+      <h1 class="share-title">You're one step closer to unlocking <%= @school.proper_name %>.</h1>
+      <% end %>
+      <%= render partial: "schools/progress_bar", locals: {school: @school} %>
+      <p class="lead">Thanks for signing up. We'll send you an email when <%= @school.proper_name %> is unlocked.</p>
+      <p class="lead">Let your friends know about Campus Anonymous to unlock <%= @school.proper_name %> even faster!</p>
+      <div class="row">
+        <div class="col-md-6">
+          <button type="button" id="fb-share" class="btn btn-facebook btn-share btn-block">Share on Facebook</button>
+        </div>
+        <div class="col-md-6">
+          <a href='<%= "http://twitter.com/intent/tweet?#{@twitter_params}" %>' role="button" class="btn btn-twitter btn-share btn-block">Share on Twitter</a>
+        </div>
+      </div>
+    <% end %>
+    </div>
+</div>
+<script src="//platform.twitter.com/widgets.js"></script>

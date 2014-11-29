@@ -2,23 +2,7 @@
   <%= render "static_pages/nav" %>
   <div class="wrapper">
     <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h1 class="share-title">You're one step closer to unlocking <%= @school.proper_name %>.</h1>
-          <%= render partial: "schools/progress_bar", locals: {school: @school} %>
-          <p class="lead">Thanks for signing up. We'll send you an email when <%= @school.proper_name %> is unlocked.</p>
-          <p class="lead">Let your friends know about Campus Anonymous to unlock <%= @school.proper_name %> even faster!</p>
-          <div class="row">
-            <div class="col-md-6">
-              <button type="button" id="fb-share" class="btn btn-facebook btn-share btn-block">Share on Facebook</button>
-            </div>
-            <div class="col-md-6">
-              <a href='<%= "http://twitter.com/intent/tweet?#{@twitter_params}" %>' role="button" class="btn btn-twitter btn-share btn-block">Share on Twitter</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render "share" %>
     </div>
   </div>
-  <script src="//platform.twitter.com/widgets.js"></script>
 </body>

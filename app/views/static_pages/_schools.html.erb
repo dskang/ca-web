@@ -7,9 +7,15 @@
       <%= render partial: "schools/progress_bar", locals: {school: school} %>
     </div>
     <div class="col-md-3">
-      <a href="<%= new_user_registration_path(:school => "#{school.name}") %>" class="btn btn-home-unlock btn-block active <%= school.name %>" role="button">
-        <i class="fa fa-lock"></i> Unlock
-      </a>
+      <% if school.signups <= School::UNLOCK_THRESHOLD %>
+        <a href="<%= new_user_registration_path(:school => "#{school.name}") %>" class="btn btn-home-unlock btn-block active <%= school.name %>" role="button">
+          <i class="fa fa-lock"></i> Unlock
+        </a>
+      <% else %>
+        <a href="<%= new_user_session_path %>" class="btn btn-home-unlock btn-block active <%= school.name %>" role="button">
+          Login
+        </a>
+      <% end %>
     </div>
   </div>
 <% end %>
