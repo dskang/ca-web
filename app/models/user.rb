@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
       errors.add(:email, "invalid email")
     else
       school_name = pattern.match(email)["school_name"]
-      unless School.find_by(id: school_id).name == school_name
+      unless school.name == school_name
         errors.add(:email, "invalid email")
       end
     end
