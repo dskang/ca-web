@@ -22,6 +22,10 @@ class School < ActiveRecord::Base
     signups >= UNLOCK_THRESHOLD
   end
 
+  def remaining_signups
+    UNLOCK_THRESHOLD - signups
+  end
+
   # use the name as the slug
   # https://gist.github.com/cdmwebs/1209732
   def to_param

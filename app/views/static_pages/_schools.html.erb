@@ -3,19 +3,25 @@
     <div class="col-md-2">
       <h3 class="homepage-school-name"><%= school.proper_name %></h3>
     </div>
-    <div class="col-md-7">
-      <%= render partial: "schools/progress_bar", locals: {school: school} %>
-    </div>
-    <div class="col-md-3">
-      <% if school.signups <= School::UNLOCK_THRESHOLD %>
-        <a href="<%= new_user_registration_path(:school => "#{school.name}") %>" class="btn btn-home-unlock btn-block active <%= school.name %>" role="button">
-          <i class="fa fa-lock"></i> Unlock
-        </a>
-      <% else %>
-        <a href="<%= new_user_session_path %>" class="btn btn-home-unlock btn-block active <%= school.name %>" role="button">
-          Login
-        </a>
-      <% end %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="col-md-10">
+        <%= render partial: "schools/progress_bar", locals: {school: school} %>
+      </div>
+    <% else %>
+      <div class="col-md-7">
+        <%= render partial: "schools/progress_bar", locals: {school: school} %>
+      </div>
+      <div class="col-md-3">
+        <% if school.signups <= School::UNLOCK_THRESHOLD %>
+          <a href="<%= new_user_registration_path(:school => "#{school.name}") %>" class="btn btn-home-unlock btn-block active <%= school.name %>" role="button">
+            <i class="fa fa-lock"></i> Unlock
+          </a>
+        <% else %>
+          <a href="<%= new_user_session_path %>" class="btn btn-home-unlock btn-block active <%= school.name %>" role="button">
+            Login
+          </a>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 <% end %>
