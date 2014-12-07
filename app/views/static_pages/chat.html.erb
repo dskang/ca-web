@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link href="css/chat.css" rel="stylesheet" type="text/css" media="all">
+    <%= stylesheet_link_tag "chat", media: "all" %>
   </head>
   <body ng-controller="ChatCtrl">
     <div id="fb-root"></div>
@@ -112,6 +112,6 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-sanitize.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-animate.js"></script>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "chat" %>
   </body>
 </html>
