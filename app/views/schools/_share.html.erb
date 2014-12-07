@@ -1,5 +1,9 @@
 <% if user_signed_in? %>
   <% @school = current_user.school %>
+  <% twitter_params = {} %>
+  <% twitter_params[:url] = "http://campusanonymous.com" %>
+  <% twitter_params[:text] = "We need #{@school.remaining_signups} more signups to bring Campus Anonymous to #{@school.proper_name}!" %>
+  <% @twitter_params = twitter_params.to_query %>
 <% end %>
 
 <div class="row text-center">
@@ -24,8 +28,8 @@
         <h1 class="share-title">Welcome back, <%= current_user.name.split(" ").first.titleize %>! You've done your part to help unlock <%= @school.proper_name %>.</h1>
       <% else %>
       <h1 class="share-title">You're one step closer to unlocking <%= @school.proper_name %>.</h1>
-      <% end %>
       <%= render partial: "schools/progress_bar", locals: {school: @school} %>
+      <% end %>
       <p class="lead">Thanks for signing up. We'll send you an email when <%= @school.proper_name %> is unlocked.</p>
       <p class="lead">Let your friends know about Campus Anonymous to unlock <%= @school.proper_name %> even faster!</p>
       <div class="row">
