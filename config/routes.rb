@@ -1,6 +1,7 @@
 Ca::Application.routes.draw do
 
   root "static_pages#home"
+  get "/chat" => "static_pages#chat"
   get "/about" => "static_pages#about"
   get "/unlock/:school", to: "schools#countdown", as: :countdown
   get "/share/:school", to: "schools#share", as: :share

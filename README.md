@@ -16,3 +16,7 @@ We want to simulate the production environment's subdomains, so add the followin
 127.0.0.1 www.campusanonymous.local
 127.0.0.1 socket.campusanonymous.local
 ```
+
+## Angular integration
+
+All angular files are under `app/assets/javascripts/angular`.

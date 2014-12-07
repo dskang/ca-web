@@ -15,3 +15,10 @@
 //= require turbolinks
 //= require bootstrap
 //= require_tree .
+
+//= stub chat
+//= stub angular/app
+//= stub angular/controllers
+//= stub angular/directives
+//= stub angular/services
+//= stub angular/filters
