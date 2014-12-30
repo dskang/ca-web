@@ -6,23 +6,23 @@ class User < ActiveRecord::Base
 
   belongs_to :school
 
-  validate :class_year_must_be_valid
-  validate :email_must_match_unlock_page
-  validates :email, presence: true, length: { maximum: 50 }, uniqueness: true
+  validates :name, :class_year, :email, :password, :school, presence: true
+  validates :email, length: { maximum: 50 }, uniqueness: true
+  validates :class_year, numericality: {
+    only_integer: true,
+    greater_than_or_equal_to: Time.now.year,
+    less_than_or_equal_to: Time.now.year + 4
+  }
 
-  def class_year_must_be_valid
-    current_year = Time.now.year
-    unless class_year >= current_year and class_year <= current_year + 4
-      errors.add(:class_year, "invalid class year")
-    end
-  end
+  validate :email_must_match_school
 
-  def email_must_match_unlock_page
+  def email_must_match_school
     pattern = /\A[\w+\-.]+@(?<school_name>[\w+\-.]+).edu\z/i
-    if pattern.match(email).nil?
+    match = pattern.match(email)
+    if match.nil?
       errors.add(:email, "invalid email")
     else
-      school_name = pattern.match(email)["school_name"]
+      school_name = match["school_name"]
       unless school.name == school_name
         errors.add(:email, "invalid email")
       end
