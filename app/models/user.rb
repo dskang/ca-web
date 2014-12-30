@@ -6,14 +6,14 @@ class User < ActiveRecord::Base
 
   belongs_to :school
 
-  validate :class_year_must_be_reasonable
+  validate :class_year_must_be_valid
   validate :email_must_match_unlock_page
   validates :email, presence: true, length: { maximum: 50 }, uniqueness: true
 
-  def class_year_must_be_reasonable
+  def class_year_must_be_valid
     current_year = Time.now.year
-    unless class_year >= current_year and class_year < current_year + 4
-      errors.add(:class_year, "unreasonable class year")
+    unless class_year >= current_year and class_year <= current_year + 4
+      errors.add(:class_year, "invalid class year")
     end
   end
 
