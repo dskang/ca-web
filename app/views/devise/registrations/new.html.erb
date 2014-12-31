@@ -14,6 +14,7 @@
       <%= f.number_field :class_year %>
       <%= f.email_field :email %>
       <%= f.password_field :password %>
+      <%= f.password_field :password_confirmation %>
       <%= f.hidden_field :school_id, value: @school.id %>
       <%= f.submit "Sign Up", class: "go-btn btn #{@school.name} btn-xlg btn-block" %>
     <% end %>

@@ -3,7 +3,6 @@
 <% schools = %w(princeton harvard yale brown upenn columbia dartmouth cornell) %>
 <% schools.each do |school| %>
 <%= school %>:
-  id: <%= schools.index(school) + 1 %>
   name: <%= school %>
   signups: 0
 <% end %>
