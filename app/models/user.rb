@@ -16,17 +16,10 @@ class User < ActiveRecord::Base
   validate :email_must_match_school
 
   def email_must_match_school
-    pattern = /\A[\w+\-.]+@(?<school_name>[\w+\-.]+).edu\z/i
-    match = pattern.match(email)
-    if match.nil?
-      errors.add(:email, "invalid email")
-    else
-      school_name = match["school_name"]
-      unless school.name == school_name
-        errors.add(:email, "invalid email")
-      end
+    pattern = /\A[\w+\-.]+@#{school.name}.edu\z/i
+    if pattern.match(email).nil?
+      errors.add(:email, "invalid #{school.name}.edu email")
     end
   end
-
 
 end
