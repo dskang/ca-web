@@ -9,9 +9,4 @@ class UserTest < ActiveSupport::TestCase
     assert @user.save
   end
 
-  test "should not save user if email does not match school" do
-    assert_equal @user.school.name, 'princeton'
-    @user.email = 'dskang@harvard.edu'
-    assert_not @user.save
-  end
 end

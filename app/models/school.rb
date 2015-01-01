@@ -3,12 +3,6 @@ class School < ActiveRecord::Base
 
   validate :name, presence: true, uniqueness: true
 
-  UNLOCK_THRESHOLD = 200
-
-  def percent_signed_up
-    signups.to_f / UNLOCK_THRESHOLD * 100
-  end
-
   def proper_name
     case name
     when "upenn"
@@ -16,14 +10,6 @@ class School < ActiveRecord::Base
     else
       name.titleize
     end
-  end
-
-  def unlocked?
-    signups >= UNLOCK_THRESHOLD
-  end
-
-  def remaining_signups
-    UNLOCK_THRESHOLD - signups
   end
 
   # use the name as the slug
