@@ -1,22 +1,16 @@
 class Users::ConfirmationsController < Devise::ConfirmationsController
 
   def show
-    confirmation_token = params[:confirmation_token]
-    user = User.find_by(confirmation_token: confirmation_token)
-    if user.nil?
-      redirect_to :root
-    else
-      school = user.school
+    super do |user|
       if user.confirmed?
-        set_flash_message :alert, :already_confirmed
-      else
-        user.confirm!
-        user.update(confirmation_token: confirmation_token)
         user.school.increment!(:signups)
-        set_flash_message :notice, :confirmed
       end
-      redirect_to share_path(school: school)
     end
   end
 
+  protected
+
+  def after_confirmation_path_for(resource_name, resource)
+    share_path(school: resource.school)
+  end
 end

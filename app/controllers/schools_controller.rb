@@ -1,8 +1,4 @@
 class SchoolsController < ApplicationController
-  def countdown
-    @school = get_school_or_redirect
-  end
-
   def share
     @school = get_school_or_redirect
 

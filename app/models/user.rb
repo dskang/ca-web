@@ -2,32 +2,24 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   belongs_to :school
 
-  validate :class_year_must_be_reasonable
-  validate :email_must_match_unlock_page
-  validates :email, presence: true, length: { maximum: 50 }, uniqueness: true
+  validates :name, :class_year, :email, :school, presence: true
+  validates :class_year, numericality: {
+    only_integer: true,
+    greater_than_or_equal_to: Time.now.year,
+    less_than_or_equal_to: Time.now.year + 4
+  }
 
-  def class_year_must_be_reasonable
-    current_year = Time.now.year
-    unless class_year >= current_year and class_year < current_year + 4
-      errors.add(:class_year, "unreasonable class year")
-    end
-  end
+  validate :email_must_match_school
 
-  def email_must_match_unlock_page
-    pattern = /\A[\w+\-.]+@(?<school_name>[\w+\-.]+).edu\z/i
+  def email_must_match_school
+    pattern = /\A[\w+\-.]+@#{school.name}.edu\z/i
     if pattern.match(email).nil?
-      errors.add(:email, "invalid email")
-    else
-      school_name = pattern.match(email)["school_name"]
-      unless school.name == school_name
-        errors.add(:email, "invalid email")
-      end
+      errors.add(:email, "invalid #{school.name}.edu email")
     end
   end
-
 
 end
