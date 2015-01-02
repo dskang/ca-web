@@ -1,35 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head prefix="og: http://ogp.me/ns#">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title><%= content_for?(:title) ? yield(:title) : "Campus Anonymous" %></title>
-  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Campus Anonymous is a site to connect college students anonymously." %>">
-  <meta property="og:title" content="Campus Anonymous">
-  <meta property="og:description" content="There are amazing people in the Ivy League you've never met.">
-  <meta property="og:url" content="http://www.campusanonymous.com">
-  <meta property="og:image" content="http://www.tigersanonymous.com/img/ta1024.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1024">
-  <meta property="og:image:height" content="1024">
-  <%= favicon_link_tag '/favico.ico' %>
-  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-  <%= stylesheet_link_tag "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", media: "all" %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body class="cover">
-  <%= render 'layouts/messages' %>
-  <div class="wrapper">
-    <div class="container">
-      <% if content_for?(:form_title) %>
-        <div class="row text-center">
-          <div class="col-md-12">
-            <h1 class="devise-header"><%= yield :form_title %></h1>
-          </div>
-        </div>
-      <% end %>
-      <%= yield %>
+<% content_for :devise do %>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3">
+        <%= yield %>
+      </div>
     </div>
   </div>
-</body>
-</html>
+<% end %>
+<%= render template: "layouts/application" %>

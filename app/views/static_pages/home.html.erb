@@ -1,18 +1,43 @@
-<body class="cover">
-  <%= render "nav" %>
-  <div class="wrapper">
-    <div class="container">
-      <% if user_signed_in? && current_user.school.unlocked? %>
-        <%= render "schools/share" %>
-      <% elsif user_signed_in? %>
-        <%= render "schools/share" %>
-        <%= render "schools" %>
-        <%= render "footer" %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="hook">There are amazing people at Princeton you've never met.</h1>
+    </div>
+  </div>
+  <div class="row how-it-works">
+    <div class="col-sm-4">
+      <i class="fa fa-users large-icon"></i>
+      <h3>Step 1: Be matched</h3>
+      <p>
+        Get paired anonymously with another student. We'll even provide a question to get the conversation started.
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <i class="fa fa-comments large-icon"></i>
+      <h3>Step 2: Chat</h3>
+      <p>
+        If the conversation goes well, you'll be asked whether or not you want to find out who you're chatting with. Your partner won't know what you choose.
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <i class="fa fa-smile-o large-icon"></i>
+      <h3>Step 3: Make friends</h3>
+      <p>
+        If both people say yes, your identities will be revealed to each other. If not, you will both stay anonymous. It's completely up to you.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <% if user_signed_in? %>
+        <%= link_to "Start Chatting", chat_path, class: "btn btn-success btn-lg btn-block" %>
       <% else %>
-        <%= render "how_it_works" %>
-        <%= render "schools" %>
-        <%= render "footer" %>
+        <%= bootstrap_form_for(User.new, url: user_registration_path) do |f| %>
+          <%= f.email_field :email, hide_label: true, class: "input-lg", placeholder: "School Email (.edu)" %>
+          <%= f.password_field :password, hide_label: true, class: "input-lg", placeholder: "New Password" %>
+          <%= f.submit "Sign Up", class: "btn btn-success btn-lg btn-block" %>
+        <% end %>
       <% end %>
     </div>
   </div>
-</body>
+</div>

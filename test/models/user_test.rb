@@ -47,4 +47,12 @@ class UserTest < ActiveSupport::TestCase
     assert @user.save
   end
 
+  test "should not allow multiple users with same email" do
+    user = User.new(email: 'hi@princeton.edu', password: 'asdf')
+    assert user.save
+    user2 = User.new(email: 'hi@princeton.edu', password: 'fdsa')
+    assert_not user2.save
+    assert_equal [:email], user2.errors.keys
+  end
+
 end
