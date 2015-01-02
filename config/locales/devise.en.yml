@@ -3,10 +3,6 @@
 en:
   devise:
     confirmations:
-      user:
-        confirmation_already_sent: "We've already sent a confirmation link to this email address. Please check your email."
-        already_confirmed: "This email address has already been confirmed."
-        confirmed: "Thanks for confirming! Share with your friends to unlock your school faster."
       confirmed: "Your account was successfully confirmed."
       send_instructions: "You will receive an email with instructions about how to confirm your account in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions about how to confirm your account in a few minutes."
@@ -37,9 +33,6 @@ en:
       updated: "Your password was changed successfully. You are now signed in."
       updated_not_active: "Your password was changed successfully."
     registrations:
-      user:
-        invalid_email: "Please enter a valid %{school}.edu email address."
-        invalid_class_year: "Please enter a valid class year (you must be a current student to use this site)."
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
