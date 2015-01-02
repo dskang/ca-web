@@ -2,13 +2,14 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :confirmable
 
   belongs_to :school
 
   before_validation :set_school_from_email
 
   validates :email, :school, presence: true
+  validates :password, presence: true, if: :password_required?
 
   EMAIL_REGEX = /\A[\w+\-.]+@(?<school>\w+)\.edu\z/i
 
@@ -19,10 +20,16 @@ class User < ActiveRecord::Base
       if school
         self.school = school
       else
-        errors.add(:school, "invalid school")
+        errors.add(:school, "must be in the Ivy League")
       end
     else
-      errors.add(:email, "invalid email")
+      errors.add(:email, "must be of the form id@college.edu")
     end
+  end
+
+  # Passwords are only required for new records because saved records
+  # don't have a password field
+  def password_required?
+    !persisted?
   end
 end
