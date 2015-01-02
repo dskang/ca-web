@@ -14,10 +14,6 @@ $(document).on "click", "#fb-share", ->
 
 $(document).ready ->
   $("#new_user").on("ajax:success", (e, data, status, xhr) ->
-    console.log status
-    console.log xhr
-    console.log xhr.responseText
+    console.log JSON.parse(xhr.responseText)
   ).on "ajax:error", (e, xhr, status, error) ->
-    console.log xhr
-    console.log status
-    console.log error
+    console.log JSON.parse(xhr.responseText)
