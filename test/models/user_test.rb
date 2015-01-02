@@ -8,5 +8,4 @@ class UserTest < ActiveSupport::TestCase
   test "should save fixture without errors" do
     assert @user.save
   end
-
 end
