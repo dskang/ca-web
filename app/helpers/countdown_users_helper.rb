@@ -1,2 +1,0 @@
-module CountdownUsersHelper
-end

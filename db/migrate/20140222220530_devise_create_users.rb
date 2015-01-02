@@ -3,8 +3,6 @@ class DeviseCreateUsers < ActiveRecord::Migration
     create_table(:users) do |t|
 
       # User information for Campus Anonymous
-      t.string  :name
-      t.integer :class_year
       t.belongs_to :school
 
       ## Database authenticatable

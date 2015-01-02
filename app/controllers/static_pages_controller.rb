@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
   def home
-    @schools = School.order(signups: :desc)
   end
 
   def about
@@ -10,6 +9,6 @@ class StaticPagesController < ApplicationController
   end
 
   def chat
-      render layout: false
+    render layout: false
   end
 end

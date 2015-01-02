@@ -1,6 +1,4 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 dk:
-  name: Dan Kang
-  class_year: 2015
   email: dskang@princeton.edu
-  school: princeton
+  school_id: 1
