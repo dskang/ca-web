@@ -1,0 +1,59 @@
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <%= link_to 'Campus Anonymous', root_path, class: 'navbar-brand' %>
+    <form class="navbar-form navbar-right">
+      <!-- TODO: Replace with model form -->
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary">Sign In</button>
+    </form>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="hook">There are amazing people at Princeton you've never met.</h1>
+    </div>
+  </div>
+  <div class="row how-it-works">
+    <div class="col-sm-4">
+      <i class="fa fa-users large-icon"></i>
+      <h3>Step 1: Be matched</h3>
+      <p>
+        Get paired anonymously with another student. We'll even provide a question to get the conversation started.
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <i class="fa fa-comments large-icon"></i>
+      <h3>Step 2: Chat</h3>
+      <p>
+        If the conversation goes well, you'll be asked whether or not you want to find out who you're chatting with. Your partner won't know what you choose.
+      </p>
+    </div>
+    <div class="col-sm-4">
+      <i class="fa fa-smile-o large-icon"></i>
+      <h3>Step 3: Make friends</h3>
+      <p>
+        If both people say yes, your identities will be revealed to each other. If not, you will both stay anonymous. It's completely up to you.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <!-- TODO: Replace with model form -->
+      <form>
+        <div class="form-group">
+          <input type="email" class="form-control input-lg" placeholder="School Email (.edu)">
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control input-lg" placeholder="New Password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
