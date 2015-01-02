@@ -27,6 +27,24 @@ class UserTest < ActiveSupport::TestCase
   test "should reject non-ivy schools" do
     @user.email = "hi@duke.edu"
     assert_not @user.save
+    assert_equal [:school], @user.errors.keys
+  end
+
+  test "should reject invalid emails" do
+    @user.email = 'abcd@efg'
+    assert_not @user.save
+    assert_equal [:email], @user.errors.keys
+  end
+
+  test "should require password for unsaved users" do
+    user = User.new(email: 'hi@princeton.edu')
+    assert_not user.save
+    assert_equal [:password], user.errors.keys
+  end
+
+  test "should not require password field for saved users" do
+    @user.password = nil
+    assert @user.save
   end
 
 end
