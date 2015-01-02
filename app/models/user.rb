@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   before_validation :set_school_from_email
 
   validates :email, :school, presence: true
+  validates :email, uniqueness: true
   validates :password, presence: true, if: :password_required?
 
   EMAIL_REGEX = /\A[\w+\-.]+@(?<school>\w+)\.edu\z/i
