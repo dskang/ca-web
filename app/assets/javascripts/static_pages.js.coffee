@@ -10,3 +10,14 @@ $(document).on "click", "#fb-share", ->
     method: 'share'
     href: 'http://campusanonymous.com'
   , (response) ->
+
+
+$(document).ready ->
+  $("#new_user").on("ajax:success", (e, data, status, xhr) ->
+    console.log status
+    console.log xhr
+    console.log xhr.responseText
+  ).on "ajax:error", (e, xhr, status, error) ->
+    console.log xhr
+    console.log status
+    console.log error

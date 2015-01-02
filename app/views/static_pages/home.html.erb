@@ -44,7 +44,7 @@
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <%= bootstrap_form_for(User.new, url: user_registration_path) do |f| %>
+      <%= bootstrap_form_for(User.new, url: user_registration_path, remote: true, html: {:'data-type' => 'json'}) do |f| %>
         <%= f.email_field :email, hide_label: true, class: "input-lg", placeholder: "School Email (.edu)" %>
         <%= f.password_field :password, hide_label: true, class: "input-lg", placeholder: "New Password" %>
         <%= f.submit "Sign Up", class: "btn btn-success btn-lg btn-block" %>
