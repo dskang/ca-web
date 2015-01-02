@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :password, presence: true, if: :password_required?
 
-  EMAIL_REGEX = /\A[\w+\-.]+@(?<school>\w+)\.edu\z/i
+  EMAIL_REGEX = /\A[\w+\-.]+@(?<school>.+)\.edu\z/i
 
   def set_school_from_email
     match = EMAIL_REGEX.match(email)
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
         errors.add(:school, "must be in the Ivy League")
       end
     else
-      errors.add(:email, "must be of the form id@college.edu")
+      errors.add(:email, "must be an .edu email address")
     end
   end
 
