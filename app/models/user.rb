@@ -28,9 +28,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  protected
+
   # Passwords are only required for new records because saved records
   # don't have a password field
   def password_required?
     !persisted?
   end
+
+  def confirmation_required?
+    false
+  end
+
 end
