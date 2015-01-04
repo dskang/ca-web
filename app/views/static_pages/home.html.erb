@@ -28,11 +28,12 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-sm-6 col-sm-offset-3 text-center">
       <% if user_signed_in? and current_user.confirmed? %>
         <%= link_to "Start Chatting", chat_path, class: "btn btn-success btn-lg btn-block" %>
       <% elsif user_signed_in? %>
-        <%= link_to "Confirm your email to start chatting", root_path, class: "btn btn-warning btn-lg btn-block" %>
+        <h4>Check your email for a confirmation link to confirm your account and get started!</h4>
+        <%= link_to "Resend confirmation email", user_confirmation_path(user: {email: current_user.email}), class: "btn btn-warning btn-lg btn-block", method: :post %>
       <% else %>
       <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.email_field :email, hide_label: true, class: "input-lg", autofocus: true, placeholder: "School Email (.edu)" %>
