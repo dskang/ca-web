@@ -2,6 +2,7 @@ Ca::Application.routes.draw do
 
   root "static_pages#home"
   get "/chat" => "static_pages#chat"
+  get "/about" => "static_pages#about"
 
   devise_for :users, :skip => [:sessions, :registrations], controllers: {
     confirmations: "confirmations"
