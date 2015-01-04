@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
       if school
         self.school = school
       else
-        errors.add(:school, "must be in the Ivy League")
+        errors.add(:email, "must be in the Ivy League")
       end
     else
       errors.add(:email, "must be an .edu email address")

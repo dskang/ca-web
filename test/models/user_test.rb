@@ -27,7 +27,7 @@ class UserTest < ActiveSupport::TestCase
   test "should reject non-ivy schools" do
     @user.email = "hi@duke.edu"
     assert_not @user.save
-    assert_equal [:school], @user.errors.keys
+    assert_equal [:email], @user.errors.keys
   end
 
   test "should reject invalid emails" do
@@ -58,6 +58,6 @@ class UserTest < ActiveSupport::TestCase
   test "should reject edu email addresses with subdomains" do
     @user.email = 'hi@cs.princeton.edu'
     assert_not @user.save
-    assert_equal [:school], @user.errors.keys
+    assert_equal [:email], @user.errors.keys
   end
 end
