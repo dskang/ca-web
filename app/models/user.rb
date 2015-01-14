@@ -36,8 +36,4 @@ class User < ActiveRecord::Base
     !persisted?
   end
 
-  def confirmation_required?
-    false
-  end
-
 end
