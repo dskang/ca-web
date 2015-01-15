@@ -9,7 +9,7 @@
       <i class="fa fa-users large-icon"></i>
       <h3>Step 1: Be matched</h3>
       <p>
-        Get paired anonymously with another student. We'll even provide a question to get the conversation started.
+        Get paired anonymously with another Princeton student. We'll even provide a question to get the conversation started.
       </p>
     </div>
     <div class="col-sm-4">
@@ -28,16 +28,23 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
-      <% if user_signed_in? %>
+    <div class="col-sm-6 col-sm-offset-3 text-center">
+      <% if user_signed_in? and current_user.confirmed? %>
         <%= link_to "Start Chatting", chat_path, class: "btn btn-success btn-lg btn-block" %>
+      <% elsif user_signed_in? %>
+        <h4>Check your email for a confirmation link to confirm your account and get started!</h4>
+        <%= bootstrap_form_for(resource, as: resource_name, url: confirmation_path(resource_name)) do |f| %>
+          <%= f.hidden_field :email, value: current_user.email %>
+          <%= f.submit "Resend confirmation email", class: "btn btn-warning btn-lg btn-block" %>
+        <% end %>
       <% else %>
-        <%= bootstrap_form_for(User.new, url: user_registration_path) do |f| %>
-          <%= f.email_field :email, hide_label: true, class: "input-lg", placeholder: "School Email (.edu)" %>
+      <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.email_field :email, hide_label: true, class: "input-lg", autofocus: true, placeholder: "School Email (.edu)" %>
           <%= f.password_field :password, hide_label: true, class: "input-lg", placeholder: "New Password" %>
           <%= f.submit "Sign Up", class: "btn btn-success btn-lg btn-block" %>
         <% end %>
       <% end %>
+      <h5><%= link_to "About", "/about" %></h5>
     </div>
   </div>
 </div>
