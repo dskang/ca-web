@@ -33,7 +33,10 @@
         <%= link_to "Start Chatting", chat_path, class: "btn btn-success btn-lg btn-block" %>
       <% elsif user_signed_in? %>
         <h4>Check your email for a confirmation link to confirm your account and get started!</h4>
-        <%= link_to "Resend confirmation email", user_confirmation_path(user: {email: current_user.email}), class: "btn btn-warning btn-lg btn-block", method: :post %>
+        <%= bootstrap_form_for(resource, as: resource_name, url: confirmation_path(resource_name)) do |f| %>
+          <%= f.hidden_field :email, value: current_user.email %>
+          <%= f.submit "Resend confirmation email", class: "btn btn-warning btn-lg btn-block" %>
+        <% end %>
       <% else %>
       <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.email_field :email, hide_label: true, class: "input-lg", autofocus: true, placeholder: "School Email (.edu)" %>
