@@ -9,10 +9,8 @@ Ca::Application.routes.draw do
   }
 
   devise_scope :user do
-    get '/login', to: 'sessions#new', as: :new_user_session
     post '/login', to: 'sessions#create', as: :user_session
     delete '/logout', to: 'sessions#destroy', as: :destroy_user_session
-    get '/signup', to: 'registrations#new', as: :new_user_registration
     post '/signup', to: 'registrations#create', as: :user_registration
   end
 
