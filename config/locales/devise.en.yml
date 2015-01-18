@@ -34,6 +34,8 @@ en:
       updated_not_active: "Your password was changed successfully."
     registrations:
       destroyed: "Bye! Your account was successfully cancelled. We hope to see you again soon."
+      invalid_email: "You need to use a valid .edu email address to sign up."
+      not_an_ivy: "Sorry, Campus Anonymous is only available to Ivy League students at the moment. Check back soon to see when it'll be available for your school!"
       signed_up: "Welcome! You have signed up successfully."
       signed_up_but_inactive: "You have signed up successfully. However, we could not sign you in because your account is not yet activated."
       signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
