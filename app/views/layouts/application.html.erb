@@ -14,6 +14,7 @@
     <%= favicon_link_tag '/favicon.ico' %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= stylesheet_link_tag "http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css", media: "all" %>
+    <%= stylesheet_link_tag "//cdn.jsdelivr.net/jquery.slick/1.3.15/slick.css", media: "all" %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
@@ -35,6 +36,7 @@
          fjs.parentNode.insertBefore(js, fjs);
        }(document, 'script', 'facebook-jssdk'));
     </script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.3.15/slick.min.js"></script>
     <%= render 'shared/navigation' %>
     <%= render 'shared/messages' %>
     <%= content_for?(:devise) ? yield(:devise) : yield %>
