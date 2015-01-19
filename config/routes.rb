@@ -5,7 +5,8 @@ Ca::Application.routes.draw do
   get "/about", to: "static_pages#about"
 
   devise_for :users, :skip => [:sessions, :registrations], controllers: {
-    confirmations: "confirmations"
+    confirmations: "confirmations",
+    passwords: "passwords"
   }
 
   devise_scope :user do
