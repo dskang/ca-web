@@ -4,7 +4,7 @@ Ca::Application.routes.draw do
   get "/chat", to: "static_pages#chat"
   get "/about", to: "static_pages#about"
 
-  devise_for :users, :skip => [:sessions, :registrations], controllers: {
+  devise_for :users, skip: [:sessions, :registrations], controllers: {
     confirmations: "confirmations",
     passwords: "passwords"
   }
