@@ -22,12 +22,17 @@ class RegistrationsController < Devise::RegistrationsController
         @minimum_password_length = resource_class.password_length.min
       end
 
-      if resource.errors.messages.has_key?(:email)
-        error_message = :invalid_email
-      elsif resource.errors.messages.has_key?(:school)
-        error_message = :not_an_ivy
+      if is_flashing_format?
+        if resource.errors.keys.length == 1 && resource.errors.has_key?(:school)
+          set_flash_message :alert, :not_an_ivy
+        else
+          messages = []
+          resource.errors.keys.each do |attribute|
+            messages.push(resource.errors.full_messages_for(attribute)) unless attribute == :school
+          end
+          flash[:alert] = messages.join('. ') + '.'
+        end
       end
-      set_flash_message :alert, error_message if is_flashing_format?
       redirect_to root_path
     end
   end
