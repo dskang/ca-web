@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
   end
 
   def chat
+    session[:email] = current_user.email
     render layout: false
   end
 end
