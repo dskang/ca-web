@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="pom">
   <head ng-controller="TitleCtrl">
-    <title ng-bind="getTitle()">Tigers Anonymous</title>
+    <title ng-bind="getTitle()">Campus Anonymous</title>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -12,7 +12,7 @@
     <div id="fb-root"></div>
     <div class="nav">
       <div class="nav-container">
-        <span class="brand" href="/">Tigers Anonymous</span>
+        <span class="brand" href="/">Campus Anonymous</span>
         <a class="volume" ng-click="playSound = !playSound" ng-cloak>
           <i class="fa fa-volume-up" ng-show="playSound"></i>
           <i class="fa fa-volume-off" ng-show="!playSound"></i>
@@ -43,7 +43,7 @@
             <div ng-switch-when="system">
               <div ng-switch="message.template" ng-class="{important: message.important}">
                 <div ng-switch-when="entrance">
-                  Welcome to Tigers Anonymous!
+                  Welcome to Campus Anonymous!
                 </div>
                 <div ng-switch-when="waiting">
                   Waiting for another Princeton student to join...
@@ -71,7 +71,7 @@
                   {{partnerName}} has disconnected. Refresh the page to start another chat!<br>
                 </div>
                 <div ng-switch-when="feedback">
-                  What do you think about Tigers Anonymous? <a href="https://docs.google.com/forms/d/1NI2nuAoYRZzYcawLrbWPKHsc43EdvbS5mU5d0A4cM2U/viewform" target="_blank">Let us know!</a>
+                  What do you think about Campus Anonymous? <a href="https://docs.google.com/forms/d/1NI2nuAoYRZzYcawLrbWPKHsc43EdvbS5mU5d0A4cM2U/viewform" target="_blank">Let us know!</a>
                 </div>
                 <div ng-switch-when="disconnected">
                   You have been disconnected.
