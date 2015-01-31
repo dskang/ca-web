@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require carousel
 //= require_tree .
 
 //= stub chat
