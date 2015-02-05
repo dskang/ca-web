@@ -13,6 +13,7 @@
  */
 
 $grid-gutter-width: 20px;
+$small-screen: 480px;
 $container-large-desktop: (940px + $grid-gutter-width);
 
 $text-color: white;
@@ -21,6 +22,7 @@ $link-hover-color: white;
 $body-bg: transparent;
 
 @import "bootstrap";
+@import "animate";
 
 html {
   height: 100%;
@@ -36,9 +38,26 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+@media (max-width: $small-screen) {
+  .homepage-left-text {
+    text-align: center;
+  }
+  .homepage-right-text {
+    text-align: center;
+  }
+}
+
+@media (min-width: $small-screen) {
+  .homepage-left-text {
+    text-align: right;
+  }
+  .homepage-right-text {
+    text-align: left;
+  }
+}
+
 .hook {
   font-size: 35px;
-  text-align: center;
 }
 
 .how-it-works {
@@ -57,4 +76,14 @@ body {
 
 .forgot-password {
   margin-bottom: 10px;
+}
+
+.carousel {
+  display: none;
+}
+
+.carousel-entrance {
+  display: inline;
+  @extend .animated;
+  @extend .fadeIn;
 }
