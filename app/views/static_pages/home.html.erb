@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
-      <h1 class="hook">There are amazing people you've never met at
+    <div class="col-sm-10 homepage-left-text">
+      <h1 class="hook">There are amazing people you've never met at</h1>
+    </div>
+    <div class="col-sm-2 homepage-right-text">
         <% School.all.each do |school| %>
-          <span class="carousel"><%= "#{school.proper_name}." %></span>
+          <h1 class="hook"><span class="carousel"><%= "#{school.proper_name}." %></span></h1>
         <% end %>
       </h1>
     </div>
