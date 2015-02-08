@@ -14,6 +14,7 @@
 
 $grid-gutter-width: 20px;
 $container-large-desktop: (940px + $grid-gutter-width);
+$max-screen-width: 995px;
 
 $text-color: white;
 $link-color: white;
@@ -37,9 +38,20 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+@media (min-width: $max-screen-width) {
+  .hook {
+    text-align: justify;
+  }
+}
+
+@media (max-width: $max-screen-width) {
+  .hook {
+    text-align: center;
+  }
+}
+
 .hook {
   font-size: 35px;
-  text-align: center;
 }
 
 .how-it-works {
