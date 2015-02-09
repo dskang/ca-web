@@ -4,7 +4,6 @@ class RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
 
     resource_saved = resource.save
-    yield resource if block_given?
     if resource_saved
       if resource.active_for_authentication?
         set_flash_message :notice, :signed_up_but_unconfirmed if is_flashing_format?
@@ -25,6 +24,7 @@ class RegistrationsController < Devise::RegistrationsController
       if is_flashing_format?
         if resource.errors.keys.length == 1 && resource.errors.has_key?(:school)
           set_flash_message :alert, :not_an_ivy
+          FailedSignup.create(email: resource.email)
         else
           messages = []
           resource.errors.keys.each do |attribute|
