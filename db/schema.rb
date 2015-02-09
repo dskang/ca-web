@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20150129010214) do
 
   create_table "schools", force: true do |t|
     t.string   "name"
-    t.integer  "signups",    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -29,8 +28,6 @@ ActiveRecord::Schema.define(version: 20150129010214) do
   add_index "schools", ["name"], name: "index_schools_on_name", unique: true
 
   create_table "users", force: true do |t|
-    t.string   "name"
-    t.integer  "class_year"
     t.integer  "school_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

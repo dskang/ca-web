@@ -46,10 +46,10 @@
                   Welcome to Campus Anonymous!
                 </div>
                 <div ng-switch-when="waiting">
-                  Waiting for another Princeton student to join...
+                  Waiting for another Ivy League student to join...
                 </div>
                 <div ng-switch-when="matched">
-                  You're now chatting with another Princeton student!<br>
+                  You're now chatting with another Ivy League student!<br>
                   <div class="question-box">
                     {{message.question}}
                   </div>
@@ -79,10 +79,6 @@
                 <div ng-switch-when="error">
                   Sorry, we're unable to connect you. Please check the following:
                   <ol>
-                    <li>
-                    You need to be using a computer connected to Princeton's network.<br>
-                    If you're off-campus, <a href="about#offcampus">follow these instructions.</a>
-                    </li>
                     <li>You can't already be chatting with a user.</li>
                     <li>You need to be using a modern web browser that supports WebSockets.</li>
                   </ol>
