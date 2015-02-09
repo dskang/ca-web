@@ -3,7 +3,7 @@
     <div class="col-sm-12">
       <h1 class="hook">There are amazing people you've never met at
         <% School.all.each do |school| %>
-          <span class="carousel"><%= "#{school.proper_name}." %></span>
+          <span class="carousel"><%= school.proper_name %>.</span>
         <% end %>
       </h1>
     </div>
