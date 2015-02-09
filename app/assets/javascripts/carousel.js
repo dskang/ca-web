@@ -9,7 +9,7 @@ $(document).ready(function(){
     schools.eq(counter).removeClass('carousel-entrance');
 
     counter++;
-    if (counter == schools.length) counter = 0;
+    if (counter === schools.length) counter = 0;
 
     schools.eq(counter).addClass('carousel-entrance');
   }, 2000);
