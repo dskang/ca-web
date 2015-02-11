@@ -21,6 +21,7 @@ $link-hover-color: white;
 $body-bg: transparent;
 
 @import "bootstrap";
+@import "animate";
 
 html {
   height: 100%;
@@ -41,6 +42,12 @@ body {
   text-align: center;
 }
 
+@media (min-width: $screen-md-min) {
+  .hook {
+    text-align: left;
+  }
+}
+
 .how-it-works {
   text-align: center;
   margin-top: 40px;
@@ -57,4 +64,14 @@ body {
 
 .forgot-password {
   margin-bottom: 10px;
+}
+
+.carousel {
+  display: none;
+}
+
+.carousel-entrance {
+  display: inline;
+  @extend .animated;
+  @extend .fadeIn;
 }
