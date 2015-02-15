@@ -75,3 +75,10 @@ body {
   @extend .animated;
   @extend .fadeIn;
 }
+
+.confirm-help {
+  margin-top: 10px;
+  a {
+    text-decoration: underline;
+  }
+}
