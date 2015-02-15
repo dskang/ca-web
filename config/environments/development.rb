@@ -33,4 +33,5 @@ Ca::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
+  config.assets.digest = true
 end
