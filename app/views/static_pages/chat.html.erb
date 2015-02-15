@@ -103,7 +103,7 @@
           ng-change="updateTyping()"></textarea>
       </div>
     </div>
-    <audio pom-play-on-message src="audio/notification.wav"></audio>
+    <audio pom-play-on-message src="<%= asset_path('notification.wav') %>"></audio>
     <script src="https://cdn.socket.io/socket.io-1.2.1.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-sanitize.js"></script>
