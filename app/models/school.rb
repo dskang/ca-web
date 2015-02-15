@@ -1,7 +1,7 @@
 class School < ActiveRecord::Base
   has_many :users
 
-  validate :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true
 
   def proper_name
     case name
