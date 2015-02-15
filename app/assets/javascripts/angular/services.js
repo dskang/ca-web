@@ -4,7 +4,7 @@ app.factory('socketUrl', function($location) {
   var socketUrl;
   var splitHost = $location.host().split('.');
   if (splitHost[splitHost.length - 1] === 'local') {
-    socketUrl = 'http://socket.campusanonymous.local:5000';
+    socketUrl = 'http://socket.ca.local:5000';
   } else {
     socketUrl = 'http://socket.' + splitHost.slice(-2).join('.');
   }
