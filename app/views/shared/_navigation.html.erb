@@ -9,7 +9,7 @@
         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-danger navbar-btn' %>
       </div>
     <% else %>
-      <%= bootstrap_form_for(User.new, url: user_session_path, html: { class: 'navbar-form navbar-right'}) do |f| %>
+      <%= bootstrap_form_for(User.new, url: new_user_session_path, html: { class: 'navbar-form navbar-right'}) do |f| %>
         <%= f.email_field :email, hide_label: true, placeholder: "Email" %>
         <%= f.password_field :password, hide_label: true, placeholder: "Password" %>
         <%= f.submit "Sign In", class: "btn btn-success" %>
