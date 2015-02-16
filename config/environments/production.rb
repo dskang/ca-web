@@ -80,4 +80,15 @@ Ca::Application.configure do
   # Add default :host parameter so that Devise Mailer can generate absolute URLs
   config.action_mailer.default_url_options = { host: "www.campusanonymous.com" }
 
+  # Use Mandrill to send emails
+  ActionMailer::Base.smtp_settings = {
+      :port =>           '587',
+      :address =>        'smtp.mandrillapp.com',
+      :user_name =>      ENV['MANDRILL_USERNAME'],
+      :password =>       ENV['MANDRILL_APIKEY'],
+      :domain =>         'campusanonymous.com',
+      :authentication => :plain
+  }
+  ActionMailer::Base.delivery_method = :smtp
+
 end
