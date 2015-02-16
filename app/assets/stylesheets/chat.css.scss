@@ -7,13 +7,23 @@
  * Chatroom
  */
 
+html {
+ height: 100%;
+ background: url(asset-path('bg.jpg')) no-repeat center center fixed;
+ -webkit-background-size: cover;
+ -moz-background-size: cover;
+ -o-background-size: cover;
+ background-size: cover;
+}
+
 body {
   font-family: Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.4;
   color: #333;
   margin: 0;
-  background-color: #333;
+  min-height: 100%; // min-height used so it extends when page height > viewport
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .chat-container {
@@ -38,15 +48,16 @@ body {
   -moz-box-sizing: border-box;
   background-color: black;
   color: white;
-  border-bottom: 1px solid #DC670C;
+  border-bottom: 1px solid #222;
   height: 50px;
   line-height: 50px;
   text-align: center;
 }
 
-.nav .brand {
-  font-size: 20px;
-  font-weight: bold;
+.brand {
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
 }
 
 .nav-container {
