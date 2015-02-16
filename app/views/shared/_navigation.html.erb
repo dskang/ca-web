@@ -1,24 +1,19 @@
 <nav class="navbar navbar-static-top">
   <div class="container">
-    <%= link_to 'Campus Anonymous', root_path, class: 'navbar-brand' %>
+    <div class="navbar-header">
+      <%= link_to 'Campus Anonymous', root_path, class: 'navbar-brand' %>
+    </div>
     <% if user_signed_in? %>
       <div class="navbar-right">
-        <p class="navbar-text">Signed in as <%= current_user.email %></p>
+        <span class="navbar-text"><%= current_user.email %></span>
         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-danger navbar-btn' %>
       </div>
     <% else %>
-      <div class="row">
-        <%= bootstrap_form_for(User.new, url: user_session_path, html: { class: 'navbar-form navbar-right'}) do |f| %>
+      <%= bootstrap_form_for(User.new, url: user_session_path, html: { class: 'navbar-form navbar-right'}) do |f| %>
         <%= f.email_field :email, hide_label: true, placeholder: "Email" %>
         <%= f.password_field :password, hide_label: true, placeholder: "Password" %>
         <%= f.submit "Sign In", class: "btn btn-success" %>
-        <% end %>
-      </div>
-      <div class="row">
-        <div class="navbar-right forgot-password">
-          <%= link_to "Forgot password?", new_user_password_path %>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </nav>
