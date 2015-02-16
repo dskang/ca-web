@@ -1,9 +1,11 @@
 <nav class="navbar navbar-static-top">
   <div class="container">
-    <%= link_to 'Campus Anonymous', root_path, class: 'navbar-brand' %>
+    <div class="navbar-header">
+      <%= link_to 'Campus Anonymous', root_path, class: 'navbar-brand' %>
+    </div>
     <% if user_signed_in? %>
       <div class="navbar-right">
-        <p class="navbar-text">Signed in as <%= current_user.email %></p>
+        <span class="navbar-text"><%= current_user.email %></span>
         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-danger navbar-btn' %>
       </div>
     <% else %>
