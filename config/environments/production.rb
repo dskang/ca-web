@@ -76,4 +76,8 @@ Ca::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  # Add default :host parameter so that Devise Mailer can generate absolute URLs
+  config.action_mailer.default_url_options = { host: "www.campusanonymous.com" }
+
 end
