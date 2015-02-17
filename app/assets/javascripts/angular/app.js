@@ -16,31 +16,35 @@ var loadGoogleAnalytics = function(window) {
 };
 
 var loadFacebook = function(window) {
-  (function(d){
-    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-    if (d.getElementById(id)) {return;}
-    js = d.createElement('script'); js.id = id; js.async = true;
-    js.src = "//connect.facebook.net/en_US/all.js";
-    ref.parentNode.insertBefore(js, ref);
-  }(window.document));
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(window.document, 'script', 'facebook-jssdk'));
 };
 
-app.run(function($window, $location) {
+app.run(function($window, env) {
   loadMixpanel($window);
-  loadGoogleAnalytics($window);
 
   var fbAppId;
-  if ($location.host() === 'localhost') {
-    fbAppId = '272759306207368';
+  if (env === 'production') {
+    loadGoogleAnalytics($window);
+    fbAppId = '446772905471110';
+  } else if (env === 'staging') {
+    fbAppId = '446776882137379';
     mixpanel.disable();
-  } else {
-    fbAppId = '190195584520995';
+  } else if (env === 'development') {
+    fbAppId = '446774172137650';
+    mixpanel.disable();
   }
 
   $window.fbAsyncInit = function() {
     FB.init({
       appId: fbAppId,
-      status: true
+      xfbml: true,
+      version: 'v2.2'
     });
   };
 
