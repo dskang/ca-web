@@ -9,6 +9,6 @@
 schools = %w(princeton harvard yale brown upenn columbia dartmouth cornell)
 schools.each { |school| School.create(name: school) }
 
-test_user = User.new(email: 'admin@princeton.edu', password: 'admin')
+test_user = User.new(email: 'admin@princeton.edu', password: 'originblack')
 test_user.skip_confirmation!
 test_user.save
