@@ -15,12 +15,6 @@ Ca::Application.routes.draw do
     post '/signup', to: 'registrations#create', as: :new_user_registration
   end
 
-  # Development only routes for previewing email copy
-  if Rails.env.development?
-    get '/confirmation_email', to: redirect('http://www.ca.local:3000/rails/mailers/devise_mailer/confirmation_instructions')
-    get '/reset_email', to: redirect('http://www.ca.local:3000/rails/mailers/devise_mailer/reset_password_instructions')
-  end
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
