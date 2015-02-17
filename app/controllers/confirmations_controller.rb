@@ -3,7 +3,7 @@ class ConfirmationsController < Devise::ConfirmationsController
   def show
     super do |resource|
       unless resource.errors.empty?
-        set_flash_message :notice, :already_confirmed
+        set_flash_message :alert, :already_confirmed
         redirect_to root_path
         return
       end
