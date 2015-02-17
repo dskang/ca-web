@@ -41,7 +41,7 @@
           <%= link_to "resend the confirmation email", user_confirmation_path(user: {email: current_user.email}), method: :post %>.
         </p>
       <% else %>
-      <%= bootstrap_form_for(resource, as: resource_name, url: new_user_registration_path) do |f| %>
+      <%= bootstrap_form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
           <%= f.email_field :email, hide_label: true, class: "input-lg", autofocus: true, placeholder: "School Email (.edu)" %>
           <%= f.password_field :password, hide_label: true, class: "input-lg", placeholder: "New Password" %>
           <%= f.submit "Sign Up", class: "btn btn-success btn-lg btn-block" %>
