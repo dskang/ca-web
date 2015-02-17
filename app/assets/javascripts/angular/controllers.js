@@ -77,8 +77,6 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
   });
 
   socket.on('error', function(error) {
-    // socket.io currently doesn't pass in custom error message
-    // https://github.com/LearnBoost/socket.io/issues/545
     messages.add({
       type: 'system',
       important: true,
