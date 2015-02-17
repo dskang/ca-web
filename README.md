@@ -17,13 +17,24 @@ We want to simulate the production environment's subdomains (for passing cookies
 127.0.0.1 socket.ca.local
 ```
 
+Develop using the domains above rather than `localhost`.
+
 ## Staging
 
-Set up your staging environment using the following steps:
+Set up your staging environment using the following steps. We will assume the names `ca-web-staging` and `ca-socket-staging` for the ca-web app and ca-socket app, respectively. For your Heroku app names, make sure they're identical except for the words "web" and "socket".
 
-1. Create two Heroku apps, one for ca-web and one for ca-socket. Make sure the app names are identical except for "web" and "socket". (e.g. "ca-web-staging" and "ca-socket-staging")
+```bash
+# ca-web
+heroku create ca-web-staging
+heroku git:remote -a ca-web-staging -r staging
+git push staging master
 
-2. `heroku config:set NODE_ENV=staging -a YOUR_CA_SOCKET_APP`
+# ca-socket
+heroku create ca-socket-staging
+heroku git:remote -a ca-socket-staging -r staging
+git push staging master
+heroku config:set NODE_ENV=staging -a ca-socket-staging
+```
 
 You're done! Note that since we cannot pass cookies between Heroku apps, ca-socket will accept any connection and generate a random email address. Therefore, you can't test functionality that requires ca-socket to know the user set on ca-web's cookie.
 
