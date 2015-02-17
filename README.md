@@ -28,6 +28,8 @@ Set up your staging environment using the following steps. We will assume the na
 heroku create ca-web-staging
 heroku git:remote -a ca-web-staging -r staging
 git push staging master
+heroku run rake db:migrate -a ca-web-staging
+heroku run rake db:seed -a ca-web-staging
 
 # ca-socket
 heroku create ca-socket-staging
@@ -36,7 +38,9 @@ git push staging master
 heroku config:set NODE_ENV=staging -a ca-socket-staging
 ```
 
-You're done! Note that since we cannot pass cookies between Heroku apps, `ca-socket` will accept any connection and generate a random email address. Therefore, you can't test functionality that requires `ca-socket` to know the user set on `ca-web`'s cookie.
+You're done! If you want to push a branch you're testing to staging, run `git push staging feature-branch:master`.
+
+Caveats: Since we cannot pass cookies between Heroku apps, `ca-socket` will accept any connection and will generate a random email address for each connection. Therefore, you can't test functionality that requires `ca-socket` to know the user set on `ca-web`'s cookie.
 
 ## Production
 
