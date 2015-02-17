@@ -70,18 +70,14 @@
                 <div ng-switch-when="finished">
                   {{partnerName}} has disconnected. Refresh the page to start another chat!<br>
                 </div>
-                <div ng-switch-when="feedback">
-                  What do you think about Campus Anonymous? <a href="https://docs.google.com/forms/d/1NI2nuAoYRZzYcawLrbWPKHsc43EdvbS5mU5d0A4cM2U/viewform" target="_blank">Let us know!</a>
-                </div>
                 <div ng-switch-when="disconnected">
                   You have been disconnected.
                 </div>
-                <div ng-switch-when="error">
-                  Sorry, we're unable to connect you. Please check the following:
-                  <ol>
-                    <li>You can't already be chatting with a user.</li>
-                    <li>You need to be using a modern web browser that supports WebSockets.</li>
-                  </ol>
+                <div ng-switch-when="signInError">
+                  Please sign in.
+                </div>
+                <div ng-switch-when="multipleSessionsError">
+                  Sorry, you can't chat with more than one person at a time.
                 </div>
                 <div ng-switch-default>
                   {{message.text}}

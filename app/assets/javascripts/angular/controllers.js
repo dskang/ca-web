@@ -76,16 +76,14 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
     }
   });
 
-  socket.on('error', function() {
-    // socket.io currently doesn't pass in custom error message
-    // https://github.com/LearnBoost/socket.io/issues/545
+  socket.on('error', function(error) {
     messages.add({
       type: 'system',
       important: true,
-      template: 'error'
+      template: error
     });
     $scope.state = 'error';
-    mixpanel.track('error');
+    mixpanel.track(error);
   });
 
   socket.on('connect', function() {
@@ -163,12 +161,6 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
       template: 'finished'
     });
     $scope.state = 'finished';
-
-    messages.add({
-      type: 'system',
-      important: false,
-      template: 'feedback'
-    });
 
     timer.stop('chatting');
     mixpanel.track('chat ended', {
