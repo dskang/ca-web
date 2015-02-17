@@ -10,9 +10,9 @@ Ca::Application.routes.draw do
   }
 
   devise_scope :user do
-    post '/login', to: 'sessions#create', as: :new_user_session
+    post '/login', to: 'sessions#create', as: :user_session
     delete '/logout', to: 'sessions#destroy', as: :destroy_user_session
-    post '/signup', to: 'registrations#create', as: :new_user_registration
+    post '/signup', to: 'registrations#create', as: :user_registration
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
