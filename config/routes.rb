@@ -4,7 +4,7 @@ Ca::Application.routes.draw do
   get "/chat", to: "static_pages#chat"
   get "/about", to: "static_pages#about"
 
-  devise_for :users, skip: [:sessions, :registrations], controllers: {
+  devise_for :users, skip: [:sessions, :registrations, :passwords], controllers: {
     confirmations: "confirmations",
     passwords: "passwords"
   }
@@ -13,6 +13,11 @@ Ca::Application.routes.draw do
     post '/login', to: 'sessions#create', as: :user_session
     delete '/logout', to: 'sessions#destroy', as: :destroy_user_session
     post '/signup', to: 'registrations#create', as: :user_registration
+    get '/forgot_password', to: 'passwords#new', as: :new_user_password
+    post '/forgot_password', to: 'passwords#create', as: :user_password
+    get '/reset_password', to: 'passwords#edit', as: :edit_user_password
+    patch '/reset_password', to: 'passwords#update'
+    put '/reset_password', to: 'passwords#update'
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
