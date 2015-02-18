@@ -39,5 +39,4 @@ Ca::Application.configure do
   Rails.application.configure do
     config.active_support.test_order = :random
   end
-
 end
