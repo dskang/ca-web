@@ -1,12 +1,30 @@
 app.constant('DROPDOWN_THRESHOLD', 15);
 
-app.factory('socketUrl', function($location) {
+app.factory('env', function($location) {
+  var hosts = {
+    production: 'campusanonymous.com',
+    staging: 'herokuapp.com',
+    development: 'ca.local'
+  };
+  for (var env in hosts) {
+    if (hosts.hasOwnProperty(env)) {
+      var host = hosts[env];
+      if ($location.host().indexOf(host) !== -1) {
+        return env;
+      }
+    }
+  }
+})
+
+app.factory('socketUrl', function($location, env) {
   var socketUrl;
-  var splitHost = $location.host().split('.');
-  if (splitHost[splitHost.length - 1] === 'local') {
-    socketUrl = 'http://socket.ca.local:5000';
+  var domain = $location.host().split('.').slice(-2).join('.');
+  if (env === 'production') {
+    socketUrl = 'http://socket.' + domain;
+  } else if (env === 'staging') {
+    socketUrl = $location.host().replace('web', 'socket');
   } else {
-    socketUrl = 'http://socket.' + splitHost.slice(-2).join('.');
+    socketUrl = 'http://socket.' + domain + ':5000';
   }
   return socketUrl;
 });

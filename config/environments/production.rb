@@ -91,4 +91,8 @@ Ca::Application.configure do
   }
   ActionMailer::Base.delivery_method = :smtp
 
+  # Set cookies on custom domains that don't match the default domain
+  # Used for setting a cookie on Heroku staging apps without specifying tld_length in session store
+  config.middleware.use "CustomDomainCookie", ".campusanonymous.com"
+
 end
