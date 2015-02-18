@@ -11,12 +11,22 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates :password, presence: true, if: :password_required?
 
-  EMAIL_REGEX = /\A[\w+\-.]+@(?<school>.+)\.edu\z/i
+  EMAIL_REGEX = /\A[\w+\-.]+@((?<subdomain>.+)\.)*(?<school>.+)\.edu\z/i
+  ALUMNI_SUBDOMAINS = %w(alumni alum cca post aya)
 
   def set_school_from_email
     match = EMAIL_REGEX.match(email)
+    subdomain = match[:subdomain]
+    school_name = match[:school]
     if match
-      school = School.find_by(name: match[:school])
+      if subdomain
+        ALUMNI_SUBDOMAINS.each do |alumni_subdomain|
+          if subdomain.include? alumni_subdomain
+            errors.add(:email, "must not be an alumni email address")
+          end
+        end
+      end
+      school = School.find_by(name: school_name)
       if school
         self.school = school
       else

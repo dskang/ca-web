@@ -24,6 +24,23 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "should accept non-alumni subdomains of all ivy league schools" do
+    ivies = %w(princeton harvard yale brown upenn columbia dartmouth cornell)
+    ivies.each do |ivy|
+      @user.email = "hi@subdomain.#{ivy}.edu"
+      assert @user.save
+    end
+  end
+
+  test "should not accept known alumni subdomains" do
+    alumni_subdomains = %w(alumni alum post aya cca)
+    alumni_subdomains.each do |subdomain|
+      @user.email = "hi@#{subdomain}.princeton.edu"
+      assert_not @user.save
+      assert_equal [:email], @user.errors.keys
+    end
+  end
+
   test "should reject non-ivy schools" do
     @user.email = "hi@duke.edu"
     assert_not @user.save
@@ -53,11 +70,5 @@ class UserTest < ActiveSupport::TestCase
     user2 = User.new(email: 'hi@princeton.edu', password: 'fdsa')
     assert_not user2.save
     assert_equal [:email], user2.errors.keys
-  end
-
-  test "should reject edu email addresses with subdomains" do
-    @user.email = 'hi@cs.princeton.edu'
-    assert_not @user.save
-    assert_equal [:school], @user.errors.keys
   end
 end
