@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, if: :password_required?
 
   EMAIL_REGEX = /\A[\w+\-.]+@((?<subdomain>.+)\.)*(?<school>.+)\.edu\z/i
-  ALUMNI_SUBDOMAINS = %w(alumni alum cca post aya)
+  ALUMNI_SUBDOMAINS = %w(alumni cca post aya)
 
   def set_school_from_email
     match = EMAIL_REGEX.match(email)
