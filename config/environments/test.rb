@@ -34,4 +34,9 @@ Ca::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  # Specify order that tests will be run in (added to get rid of deprecation warning in testing)
+  Rails.application.configure do
+    config.active_support.test_order = :sorted
+  end
 end
