@@ -33,7 +33,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should not accept known alumni subdomains" do
-    alumni_subdomains = %w(alumni alum post aya cca)
+    alumni_subdomains = %w(alumni post aya cca)
     alumni_subdomains.each do |subdomain|
       @user.email = "hi@#{subdomain}.princeton.edu"
       assert_not @user.save
