@@ -37,6 +37,6 @@ Ca::Application.configure do
 
   # Specify order that tests will be run in (added to get rid of deprecation warning in testing)
   Rails.application.configure do
-    config.active_support.test_order = :sorted
+    config.active_support.test_order = :random
   end
 end
