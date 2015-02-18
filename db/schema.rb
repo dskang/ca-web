@@ -13,13 +13,13 @@
 
 ActiveRecord::Schema.define(version: 20150129010214) do
 
-  create_table "failed_signups", force: true do |t|
+  create_table "failed_signups", force: :cascade do |t|
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "schools", force: true do |t|
+  create_table "schools", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20150129010214) do
 
   add_index "schools", ["name"], name: "index_schools_on_name", unique: true
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.integer  "school_id"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
