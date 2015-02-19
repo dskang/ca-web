@@ -41,6 +41,11 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "should accept ivy league emails with multiple subdomains" do
+    @user.email = "hi@multiple.subdomains.princeton.edu"
+    assert @user.save
+  end
+
   test "should reject non-ivy schools" do
     @user.email = "hi@duke.edu"
     assert_not @user.save
