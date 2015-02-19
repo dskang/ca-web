@@ -1,5 +1,6 @@
 Ca::Application.routes.draw do
 
+  # jk
   root "static_pages#home"
   get "/chat", to: "static_pages#chat"
   get "/about", to: "static_pages#about"
