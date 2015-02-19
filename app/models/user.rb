@@ -7,26 +7,18 @@ class User < ActiveRecord::Base
 
   before_validation :set_school_from_email
 
+  validate :current_student
   validates :email, :school, presence: true
   validates :email, uniqueness: true
   validates :password, presence: true, if: :password_required?
 
-  EMAIL_REGEX = /\A[\w+\-.]+@((?<subdomain>.+)\.)*(?<school>.+)\.edu\z/i
+  EMAIL_REGEX = /\A[\w+\-.]+@((?<subdomains>.+)\.)*(?<school>.+)\.edu\z/i
   ALUMNI_SUBDOMAINS = %w(alumni cca post aya)
 
   def set_school_from_email
     match = EMAIL_REGEX.match(email)
-    subdomain = match[:subdomain]
-    school_name = match[:school]
     if match
-      if subdomain
-        ALUMNI_SUBDOMAINS.each do |alumni_subdomain|
-          if subdomain.include? alumni_subdomain
-            errors.add(:email, "must not be an alumni email address")
-          end
-        end
-      end
-      school = School.find_by(name: school_name)
+      school = School.find_by(name: match[:school])
       if school
         self.school = school
       else
@@ -34,6 +26,20 @@ class User < ActiveRecord::Base
       end
     else
       errors.add(:email, "must be an .edu email address")
+    end
+  end
+
+  def current_student
+    match = EMAIL_REGEX.match(email)
+    if match
+      subdomains = match[:subdomains]
+      if subdomains
+        ALUMNI_SUBDOMAINS.each do |alumni_subdomain|
+          if subdomains.include? alumni_subdomain
+            errors.add(:email, "can't be an alumni email address")
+          end
+        end
+      end
     end
   end
 
