@@ -4,5 +4,4 @@
 <% schools.each do |school| %>
 <%= school %>:
   name: <%= school %>
-  signups: 0
 <% end %>
