@@ -38,7 +38,7 @@ app.controller('TitleCtrl', function($scope, $window, $interval, messages) {
 });
 
 app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown, timer, DROPDOWN_THRESHOLD) {
-  $scope.partnerName = 'Anonymous Tiger';
+  $scope.partnerName = 'Anonymous Ivy';
   $scope.messages = messages.get();
   $scope.state = null;
   $scope.dropdown = dropdown;
