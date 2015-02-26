@@ -3,6 +3,8 @@ Ca::Application.routes.draw do
   root "static_pages#home"
   get "/chat", to: "static_pages#chat"
   get "/about", to: "static_pages#about"
+  get "/terms", to: "static_pages#terms"
+  get "/privacy", to: "static_pages#privacy"
 
   # Doesn't create any routes, simply enables Devise helpers for User objects
   devise_for :user, skip: [:sessions, :registrations, :passwords, :confirmations]
