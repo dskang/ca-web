@@ -21,3 +21,6 @@
 
 # Ignore system files
 .DS_Store
+
+# Ignore all outputs of development asset pipeline
+/public/assets
