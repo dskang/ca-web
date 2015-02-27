@@ -10,3 +10,16 @@ $(document).on "click", "#fb-share", ->
     method: 'share'
     href: 'http://campusanonymous.com'
   , (response) ->
+
+# homepage school carousel
+$(document).on 'ready page:load', ->
+  carouselClass = 'carousel-entrance'
+  schools = $('.carousel')
+  schools.eq(0).addClass carouselClass
+  counter = 0
+  showNextSchool = ->
+    schools.eq(counter).removeClass carouselClass
+    counter++
+    if counter == schools.length then counter = 0
+    schools.eq(counter).addClass carouselClass
+  setInterval showNextSchool, 2000
