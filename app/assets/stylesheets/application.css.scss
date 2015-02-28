@@ -92,3 +92,19 @@ body {
     margin-bottom: 20px;
   }
 }
+
+.bio {
+  & > div {
+    margin-top: 60px;
+  }
+  text-align: center;
+  img {
+    width: 200px;
+    height: auto;
+    @include center-block;
+  }
+  p {
+    width: 300px;
+    @include center-block;
+  }
+}
