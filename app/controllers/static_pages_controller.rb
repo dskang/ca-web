@@ -7,6 +7,12 @@ class StaticPagesController < ApplicationController
   def about
   end
 
+  def terms
+  end
+
+  def privacy
+  end
+
   def chat
     if current_user.confirmed?
       session[:email] = current_user.email
