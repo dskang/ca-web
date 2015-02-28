@@ -30,8 +30,9 @@ app.factory('socketUrl', function($location, env) {
 });
 
 app.factory('socket', function($rootScope, socketUrl) {
-  var socket = io.connect(socketUrl, {
-    reconnect: false
+  var socket = io(socketUrl, {
+    reconnection: false,
+    transports: ['websocket']
   });
   return {
     on: function (eventName, callback) {
