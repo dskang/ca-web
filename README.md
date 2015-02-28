@@ -38,6 +38,13 @@ git push staging master
 heroku config:set NODE_ENV=staging -a ca-socket-staging
 ```
 
+Finally, you'll need to provision the Mandrill Heroku add-on to allow your staging ca-web app to send emails. 
+
+```bash
+# ca-web
+heroku addons:add mandrill -a ca-web-staging
+```
+
 You're done! If you want to push a branch you're testing to staging, run `git push staging feature-branch:master`.
 
 Caveats: Since we cannot pass cookies between Heroku apps, `ca-socket` will accept any connection and will generate a random email address for each connection. Therefore, you can't test functionality that requires `ca-socket` to know the user set on `ca-web`'s cookie.
