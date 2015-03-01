@@ -171,6 +171,7 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
       type: 'system',
       template: 'partnerRevealed',
       partnerName: data.name,
+      partnerEmail: data.email,
       partnerLink: data.link
     });
     mixpanel.track('partner revealed', {
