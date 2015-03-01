@@ -49,7 +49,7 @@
                   Waiting for another Ivy League student to join...
                 </div>
                 <div ng-switch-when="matched">
-                  You're now chatting with another Ivy League student!<br>
+                  You're now chatting with someone from <span ng-class="message.partnerSchool">{{message.partnerSchool | properSchoolName}}</span>!<br>
                   <div class="question-box">
                     {{message.question}}
                   </div>
