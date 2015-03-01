@@ -26,7 +26,7 @@ var loadFacebook = function(window) {
   }(window.document, 'script', 'facebook-jssdk'));
 };
 
-app.run(function($window, env) {
+app.run(function($window, env, fbAuth) {
   loadGoogleAnalytics($window);
   loadMixpanel($window);
 
@@ -45,7 +45,12 @@ app.run(function($window, env) {
     FB.init({
       appId: fbAppId,
       xfbml: true,
+      status: true,
       version: 'v2.2'
+    });
+
+    FB.Event.subscribe('auth.statusChange', function(response) {
+      fbAuth.status = response.status;
     });
   };
 
