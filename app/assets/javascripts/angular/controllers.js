@@ -148,6 +148,7 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
       question: question,
       partnerSchool: partnerSchool
     });
+    mixpanel.people.increment('chats_matched');
   });
 
   socket.on('chat message', function(data) {
@@ -178,6 +179,7 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
       messagesSent: messages.stats.sent,
       messagesReceived: messages.stats.received
     });
+    mixpanel.people.increment('partners_revealed');
   });
 
   socket.on('finished', function(data) {
@@ -220,6 +222,7 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
         $scope.message = '';
         prevMessageLength = 0;
         socket.emit('not typing');
+        mixpanel.people.increment('chat_messages');
       }
     }
   };
