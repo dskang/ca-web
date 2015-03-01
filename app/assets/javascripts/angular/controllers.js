@@ -91,14 +91,36 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
     mixpanel.track('chat joined');
   });
 
+  var getSchool = function(email) {
+    var emailRegex = /[\w+\-.]+@(?:.+\.)*(.+)\.edu/i;
+    var match = emailRegex.exec(email);
+    if (match) {
+      return match[1];
+    } else {
+      return null;
+    }
+  };
+
   socket.on('entrance', function(data) {
+    var school = getSchool(data.email);
+    if (school) {
+      mixpanel.identify(data.email);
+      mixpanel.people.set({
+        "$email": data.email,
+        school: school
+      });
+      mixpanel.people.increment('chats_joined');
+      mixpanel.register({
+        school: school
+      });
+    }
     messages.add({
       type: 'system',
       template: 'entrance'
     });
   });
 
-  socket.on('waiting', function(data) {
+  socket.on('waiting', function() {
     messages.add({
       type: 'system',
       template: 'waiting'

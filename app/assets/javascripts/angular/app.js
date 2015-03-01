@@ -27,18 +27,18 @@ var loadFacebook = function(window) {
 };
 
 app.run(function($window, env) {
+  loadGoogleAnalytics($window);
   loadMixpanel($window);
 
   var fbAppId;
   if (env === 'production') {
-    loadGoogleAnalytics($window);
     fbAppId = '446772905471110';
   } else if (env === 'staging') {
     fbAppId = '446776882137379';
-    mixpanel.disable();
+    mixpanel.register({ "$ignore": true });
   } else if (env === 'development') {
     fbAppId = '446774172137650';
-    mixpanel.disable();
+    mixpanel.register({ "$ignore": true });
   }
 
   $window.fbAsyncInit = function() {
