@@ -8,7 +8,7 @@
 $(document).on "click", "#fb-share", ->
   FB.ui
     method: 'share'
-    href: 'http://campusanonymous.com'
+    href: 'https://www.campusanonymous.com'
   , (response) ->
 
 # homepage school carousel
