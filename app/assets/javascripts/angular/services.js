@@ -124,16 +124,24 @@ app.factory('dropdown', function($rootScope, socket, messages, fbAuth) {
           name: response.name,
           link: response.link
         });
-        mixpanel.register({
-          gender: response.gender
-        });
         $rootScope.$apply(function() {
           messages.add({
             type: 'system',
             template: 'selfRevealed'
           });
         });
+        mixpanel.register({
+          gender: response.gender
+        });
         mixpanel.track('self revealed');
+        mixpanel.people.set({
+          "$first_name": response.first_name,
+          "$last_name": response.last_name,
+          "$name": response.name,
+          fb_id: response.id,
+          gender: response.gender
+        });
+        mixpanel.people.increment('self_revealed');
       }
     });
   };
