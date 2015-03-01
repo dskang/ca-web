@@ -131,11 +131,13 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
   });
 
   socket.on('matched', function(data) {
-    question = data.question;
+    var question = data.question;
+    var partnerSchool = data.partnerSchool;
     messages.add({
       type: 'system',
       template: 'matched',
-      question: question
+      question: question,
+      partnerSchool: partnerSchool
     });
     $scope.state = 'chatting';
     timer.start('chatting');
@@ -143,7 +145,8 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
     timer.stop('waiting');
     mixpanel.track('chat matched', {
       waitTime: timer.getDuration('waiting'),
-      question: question
+      question: question,
+      partnerSchool: partnerSchool
     });
   });
 

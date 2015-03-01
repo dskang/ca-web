@@ -27,11 +27,11 @@ var loadFacebook = function(window) {
 };
 
 app.run(function($window, env) {
+  loadGoogleAnalytics($window);
   loadMixpanel($window);
 
   var fbAppId;
   if (env === 'production') {
-    loadGoogleAnalytics($window);
     fbAppId = '446772905471110';
   } else if (env === 'staging') {
     fbAppId = '446776882137379';
