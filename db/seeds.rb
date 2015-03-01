@@ -12,3 +12,11 @@ schools.each { |school| School.create(name: school) }
 test_user = User.new(email: 'admin@princeton.edu', password: 'originblack')
 test_user.skip_confirmation!
 test_user.save
+
+if Rails.env.development?
+  schools.each do |school|
+    user = User.new(email: "test@#{school}.edu", password: "test")
+    user.skip_confirmation!
+    user.save
+  end
+end
