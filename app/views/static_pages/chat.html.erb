@@ -59,7 +59,7 @@
                 </div>
                 <div ng-switch-when="partnerRevealed">
                   Congratulations! You get to find out your partner's identity!<br>
-                  You've been chatting with: <a href="{{message.partnerLink}}" target="_blank">{{message.partnerName}}</a>
+                  You've been chatting with: <a href="{{message.partnerLink}}" target="_blank">{{message.partnerName}}</a> ({{message.partnerEmail}})
                 </div>
                 <div ng-switch-when="fbError">
                   Sorry, there was an error connecting to Facebook. Please try again.
