@@ -37,7 +37,7 @@
         <ul ng-cloak>
           <li ng-repeat="message in messages" ng-class="message.type" ng-switch="message.type">
             <div ng-switch-when="chat">
-              <span ng-class="{userName: !message.isPartner, partnerName: message.isPartner, {{message.school}}: message.isPartner}">{{message.name}}:</span>
+              <span ng-class="{ {{partner.school}}: message.isPartner }" class="userName">{{message.name}}:</span>
               <span ng-bind-html="message.text | linky | linkyNewlines"></span>
             </div>
             <div ng-switch-when="system">
@@ -49,7 +49,7 @@
                   Waiting for another Ivy League student to join...
                 </div>
                 <div ng-switch-when="matched">
-                  You're now chatting with someone from <span ng-class="message.partnerSchool">{{message.partnerSchool | properSchoolName}}</span>!<br>
+                  You're now chatting with someone from <span ng-class="partner.school">{{partner.school | properSchoolName}}</span>!<br>
                   <div class="question-box">
                     {{message.question}}
                   </div>
@@ -59,13 +59,13 @@
                 </div>
                 <div ng-switch-when="partnerRevealed">
                   Congratulations! You get to find out your partner's identity!<br>
-                  You've been chatting with: <a href="{{message.partnerLink}}" target="_blank">{{message.partnerName}}</a> ({{message.partnerEmail}})
+                  You've been chatting with: <a href="{{partner.link}}" target="_blank">{{partner.name}}</a> ({{partner.email}})
                 </div>
                 <div ng-switch-when="fbError">
                   Sorry, there was an error connecting to Facebook. Please try again.
                 </div>
                 <div ng-switch-when="finished">
-                  {{partnerName}} has disconnected. Refresh the page to start another chat!<br>
+                  {{partner.name}} has disconnected. Refresh the page to start another chat!<br>
                 </div>
                 <div ng-switch-when="disconnected">
                   You have been disconnected.
@@ -83,7 +83,7 @@
             </div>
           </li>
           <li class="typing" ng-show="partnerTyping && state == 'chatting'">
-            {{partnerName}} is typing...
+            {{partner.name}} is typing...
         </ul>
       </div>
       <div class="input-wrapper">

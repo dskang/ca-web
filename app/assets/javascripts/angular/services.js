@@ -4,6 +4,13 @@ app.value('fbAuth', {
   status: null
 });
 
+app.value('partner', {
+  name: "Anonymous",
+  school: null,
+  link: null,
+  email: null
+});
+
 app.factory('env', function($location) {
   var hosts = {
     production: 'campusanonymous.com',

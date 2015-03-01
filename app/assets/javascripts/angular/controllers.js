@@ -37,8 +37,8 @@ app.controller('TitleCtrl', function($scope, $window, $interval, messages) {
   };
 });
 
-app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown, timer, DROPDOWN_THRESHOLD) {
-  $scope.partnerName = 'Anonymous';
+app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown, timer, DROPDOWN_THRESHOLD, partner) {
+  $scope.partner = partner;
   $scope.messages = messages.get();
   $scope.state = null;
   $scope.dropdown = dropdown;
@@ -132,12 +132,11 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
 
   socket.on('matched', function(data) {
     var question = data.question;
-    var partnerSchool = data.partnerSchool;
+    partner.school = data.partnerSchool;
     messages.add({
       type: 'system',
       template: 'matched',
-      question: question,
-      partnerSchool: partnerSchool
+      question: question
     });
     $scope.state = 'chatting';
     timer.start('chatting');
@@ -146,17 +145,17 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
     mixpanel.track('chat matched', {
       waitTime: timer.getDuration('waiting'),
       question: question,
-      partnerSchool: partnerSchool
+      partnerSchool: partner.school
     });
     mixpanel.people.increment('chats_matched');
   });
 
   socket.on('chat message', function(data) {
+    var name = data.self ? "You" : partner.name;
     messages.add({
       type: 'chat',
-      isPartner: data.name !== 'You',
-      school: data.school,
-      name: data.name,
+      isPartner: !data.self,
+      name: name,
       text: data.message
     });
 
@@ -168,13 +167,12 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
   });
 
   socket.on('reveal', function(data) {
-    $scope.partnerName = data.name;
+    partner.name = data.name;
+    partner.email = data.email;
+    partner.link = data.link;
     messages.add({
       type: 'system',
-      template: 'partnerRevealed',
-      partnerName: data.name,
-      partnerEmail: data.email,
-      partnerLink: data.link
+      template: 'partnerRevealed'
     });
     mixpanel.track('partner revealed', {
       messagesSent: messages.stats.sent,
