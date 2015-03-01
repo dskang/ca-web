@@ -1,5 +1,9 @@
 app.constant('DROPDOWN_THRESHOLD', 15);
 
+app.value('fbAuth', {
+  status: null
+});
+
 app.factory('env', function($location) {
   var hosts = {
     production: 'campusanonymous.com',
@@ -93,7 +97,7 @@ app.factory('messages', function($rootScope, $window) {
   };
 });
 
-app.factory('dropdown', function($rootScope, socket, messages) {
+app.factory('dropdown', function($rootScope, socket, messages, fbAuth) {
   var showDropdown = false;
   var dropdownShown = false;
   var selfRevealed = false;
@@ -134,49 +138,25 @@ app.factory('dropdown', function($rootScope, socket, messages) {
     });
   };
 
-  // Verify that the Facebook account seems legitimate
-  var verifyIdentity = function() {
-    FB.api('/me/friends?limit=100', function(response) {
-      if (!response || response.error) {
-        handleFbError();
-      } else {
-        if (response.data.length > 50) {
-          sendIdentity();
-        } else {
-          $rootScope.$apply(function() {
-            messages.add({
-              type: 'system',
-              important: true,
-              template: 'fbFake'
-            });
-          });
-          mixpanel.track('facebook fake');
-        }
-      }
-    });
-  };
-
   var revealIdentity = function() {
     selfRevealed = true;
 
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        verifyIdentity();
-      } else {
-        mixpanel.track('facebook prompt');
-        FB.login(function(response) {
-          if (response.authResponse) {
-            verifyIdentity();
-          } else {
-            $rootScope.$apply(function() {
-              showDropdown = true;
-              selfRevealed = false;
-            });
-            mixpanel.track('facebook cancelled');
-          }
-        });
-      }
-    });
+    if (fbAuth.status === 'connected') {
+      sendIdentity();
+    } else {
+      mixpanel.track('facebook prompt');
+      FB.login(function(response) {
+        if (response.authResponse) {
+          sendIdentity();
+        } else {
+          $rootScope.$apply(function() {
+            showDropdown = true;
+            selfRevealed = false;
+          });
+          mixpanel.track('facebook cancelled');
+        }
+      });
+    }
   };
 
   return {
