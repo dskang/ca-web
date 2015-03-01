@@ -182,7 +182,6 @@ app.factory('dropdown', function($rootScope, socket, messages) {
   return {
     show: function() {
       if (!dropdownShown) {
-        socket.emit('dropdown displayed');
         mixpanel.track('dropdown displayed');
       }
       showDropdown = true;
