@@ -114,10 +114,6 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
         school: school
       });
     }
-    messages.add({
-      type: 'system',
-      template: 'entrance'
-    });
   });
 
   socket.on('waiting', function() {
