@@ -37,7 +37,7 @@
         <ul ng-cloak>
           <li ng-repeat="message in messages" ng-class="message.type" ng-switch="message.type">
             <div ng-switch-when="chat">
-              <span ng-class="{ {{partner.school}}: message.isPartner }" class="userName">{{message.name}}:</span>
+              <span ng-class="{ {{partner.school}}: message.isPartner }" class="userName" title="{{message.time}}">{{message.name}}:</span>
               <span ng-bind-html="message.text | linky | linkyNewlines"></span>
             </div>
             <div ng-switch-when="system">
