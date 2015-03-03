@@ -50,6 +50,13 @@ app.directive('pomFocusOnChat', function($timeout) {
 
 app.directive('pomPlayOnMessage', function($window) {
   return function(scope, element) {
+    scope.$watch('state', function(newState, oldState) {
+      if (scope.playSound && !$window.document.hasFocus()) {
+        if (oldState === 'waiting' && newState === 'chatting') {
+          element[0].play();
+        }
+      }
+    });
     scope.$watch('messages.length', function(length) {
       if (scope.playSound && !$window.document.hasFocus()) {
         if (length === 0) return;
