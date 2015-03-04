@@ -151,6 +151,7 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
     messages.add({
       type: 'chat',
       isPartner: !data.self,
+      time: (new Date()).toLocaleTimeString(),
       name: name,
       text: data.message
     });
