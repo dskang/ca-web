@@ -42,11 +42,9 @@
             </div>
             <div ng-switch-when="system">
               <div ng-switch="message.template" ng-class="{important: message.important}">
-                <div ng-switch-when="entrance">
-                  Welcome to Campus Anonymous!
-                </div>
                 <div ng-switch-when="waiting">
-                  Waiting for another Ivy League student to join...
+                  Waiting for another Ivy League student to join...<br>
+                  Feel free to do other things in the meantime! We'll play a sound when someone joins.
                 </div>
                 <div ng-switch-when="matched">
                   You're now chatting with someone from <span ng-class="partner.school">{{partner.school | properSchoolName}}</span>!<br>
