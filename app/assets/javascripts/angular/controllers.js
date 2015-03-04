@@ -88,7 +88,6 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
 
   socket.on('connect', function() {
     $scope.state = 'connected';
-    mixpanel.track('chat joined');
   });
 
   var getSchool = function(email) {
@@ -113,6 +112,7 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
       mixpanel.register({
         school: school
       });
+      mixpanel.track('chat joined');
     }
   });
 
