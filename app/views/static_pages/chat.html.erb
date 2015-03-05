@@ -65,8 +65,11 @@
                 <div ng-switch-when="finished">
                   {{partner.name}} has disconnected. Refresh the page to start another chat!<br>
                 </div>
-                <div ng-switch-when="disconnected">
-                  You have been disconnected.
+                <div ng-switch-when="reconnecting">
+                  Connection lost. Reconnecting...
+                </div>
+                <div ng-switch-when="reconnected">
+                  Reconnected.
                 </div>
                 <div ng-switch-when="signInError">
                   Please sign in.

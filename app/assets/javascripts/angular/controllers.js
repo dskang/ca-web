@@ -86,10 +86,6 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
     mixpanel.track(error);
   });
 
-  socket.on('connect', function() {
-    $scope.state = 'connected';
-  });
-
   var getSchool = function(email) {
     var emailRegex = /[\w+\-.]+@(?:.+\.)*(.+)\.edu/i;
     var match = emailRegex.exec(email);
@@ -198,14 +194,27 @@ app.controller('ChatCtrl', function($scope, $window, socket, messages, dropdown,
 
   socket.on('disconnect', function() {
     if ($scope.state !== 'finished') {
+      $scope.state = 'reconnecting';
       messages.add({
         type: 'system',
         important: true,
-        template: 'disconnected'
+        template: 'reconnecting'
       });
-      mixpanel.track('disconnected');
+      mixpanel.track('reconnecting');
     }
-    $scope.state = 'disconnected';
+  });
+
+  socket.on('connect', function() {
+    if ($scope.state === 'reconnecting') {
+      socket.emit('resume session');
+      $scope.state = 'chatting';
+      messages.add({
+        type: 'system',
+        template: 'reconnected'
+      });
+    } else {
+      socket.emit('new session');
+    }
   });
 
   $scope.sendMessage = function(e) {
