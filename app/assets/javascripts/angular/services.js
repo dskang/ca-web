@@ -31,7 +31,7 @@ app.factory('socketUrl', function($location, env) {
   var socketUrl;
   var domain = $location.host().split('.').slice(-2).join('.');
   if (env === 'production') {
-    socketUrl = 'https://socket.' + domain;
+    socketUrl = 'http://socket.' + domain;
   } else if (env === 'staging') {
     socketUrl = $location.host().replace('web', 'socket');
   } else {
