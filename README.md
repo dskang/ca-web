@@ -1,3 +1,7 @@
+## Overview
+
+`ca-web` is the Rails app for managing user accounts. See [`ca-socket`](https://github.com/dskang/ca-socket) for the Node.js service for matching users and powering chats.
+
 ## Development
 
 We want to simulate the production environment's subdomains (for passing cookies between `ca-web` and `ca-socket`), so add the following in your `/etc/hosts`:
